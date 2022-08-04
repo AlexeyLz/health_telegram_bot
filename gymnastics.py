@@ -11,7 +11,7 @@ def get_keyboard():
                types.InlineKeyboardButton(text="Смешанный труд", callback_data="state_1_1.3"),
                types.InlineKeyboardButton(text="Малоподвижный труд", callback_data="state_1_1.4"),
                types.InlineKeyboardButton(text="Назад", callback_data="state_1_1.5"),
-               types.InlineKeyboardButton(text="Продолжить", callback_data="state_1_1.6")
+               types.InlineKeyboardButton(text="Помощь", callback_data="state_1_1.6")
                ]
     keyboard = types.InlineKeyboardMarkup(row_width=2)
     keyboard.add(*buttons)
