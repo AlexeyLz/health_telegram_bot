@@ -10,6 +10,8 @@ import gymnastics
 from bot_settings import bot, TOKEN, dp
 
 
+
+
 def get_keyboard():
     buttons = [types.InlineKeyboardButton(text="Вводная гимнастика", callback_data="state_1.1"),
                types.InlineKeyboardButton(text="Физкультурная пауза", callback_data="state_1.2"),
