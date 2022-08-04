@@ -9,7 +9,9 @@ def get_keyboard():
     buttons = [types.InlineKeyboardButton(text="Умственный труд", callback_data="state_1_1.1"),
                types.InlineKeyboardButton(text="Физический труд", callback_data="state_1_1.2"),
                types.InlineKeyboardButton(text="Смешанный труд", callback_data="state_1_1.3"),
-               types.InlineKeyboardButton(text="Малоподвижный труд", callback_data="state_1_1.4")
+               types.InlineKeyboardButton(text="Малоподвижный труд", callback_data="state_1_1.4"),
+               types.InlineKeyboardButton(text="Назад", callback_data="state_1_1.5"),
+               types.InlineKeyboardButton(text="Продолжить", callback_data="state_1_1.6")
                ]
     keyboard = types.InlineKeyboardMarkup(row_width=2)
     keyboard.add(*buttons)
@@ -17,8 +19,9 @@ def get_keyboard():
 
 
 async def start_gymnastics(call):
-    await call.message.answer('Выберите пункт', reply_markup=get_keyboard())
-
+    photo1 = open('test.png', 'rb')
+    #await call.message.answer('Выберите пункт228', reply_markup=get_keyboard())
+    await bot.send_photo(call.message.chat.id, photo1, caption='это крутой спорт',reply_markup=get_keyboard())
 
 @dp.callback_query_handler(Text(startswith="state_1_1"))
 async def callbacks_num(call: types.CallbackQuery):
