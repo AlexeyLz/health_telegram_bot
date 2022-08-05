@@ -2,6 +2,8 @@ from aiogram.dispatcher.filters import Text
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
+
+import pfk
 from bot_settings import bot, TOKEN, dp
 
 
@@ -48,5 +50,11 @@ async def callbacks_num(call: types.CallbackQuery):
     elif action == "3":
 
         await call.message.edit_text('3.1')
+    elif action == "4":
+
+        await call.message.edit_text('3.1')
+    elif action == "5":
+        print(5)
+        await pfk.start_pfk(call)
 
     await call.answer()

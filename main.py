@@ -13,12 +13,16 @@ import pr
 import ppzv
 import ppfp
 
+
+
 def get_keyboard():
     buttons = [types.InlineKeyboardButton(text="Производственная Гимнастика", callback_data="main_state_1"),
                types.InlineKeyboardButton(text="Послетрудовая реабилитация", callback_data="main_state_2"),
                types.InlineKeyboardButton(text="Профилактика профессиональных заболеваний во внерабочее время", callback_data="main_state_3"),
                types.InlineKeyboardButton(text="Профессионально-прикладная \nфизическая подготовка", callback_data="main_state_4")
+
                ]
+
     keyboard = types.InlineKeyboardMarkup(row_width=1)
     keyboard.add(*buttons)
     return keyboard
@@ -29,7 +33,14 @@ def get_keyboard():
 
 @dp.message_handler(commands="start")
 async def cmd_start(message: types.Message):
+    button_to_start = types.KeyboardButton('Вернуться в начало')
+    to_start_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True).add(button_to_start)
+    photo = open('start_image.png', 'rb')
+    await message.answer_photo(photo=photo, reply_markup=to_start_keyboard)
     await message.answer("Выберите пункт", reply_markup=get_keyboard())
+
+
+
 
 
 @dp.callback_query_handler(Text(startswith="main_state"))
@@ -59,9 +70,9 @@ async def callbacks_num(call: types.CallbackQuery):
     await call.answer()
 
 
-@dp.message_handler(Text(equals="Ты лох"))
+@dp.message_handler(Text(equals="Вернуться в начало"))
 async def with_puree(message: types.Message):
-    await message.reply("Сам ты лох!")
+    await cmd_start(message)
 
 
 @dp.message_handler(lambda message: message.text == "Я лох")
