@@ -14,12 +14,13 @@ import ppzv
 import ppfp
 
 
-
 def get_keyboard():
     buttons = [types.InlineKeyboardButton(text="Производственная Гимнастика", callback_data="main_state_1"),
                types.InlineKeyboardButton(text="Послетрудовая реабилитация", callback_data="main_state_2"),
-               types.InlineKeyboardButton(text="Профилактика профессиональных заболеваний во внерабочее время", callback_data="main_state_3"),
-               types.InlineKeyboardButton(text="Профессионально-прикладная \nфизическая подготовка", callback_data="main_state_4")
+               types.InlineKeyboardButton(text="Профилактика профессиональных заболеваний во внерабочее время",
+                                          callback_data="main_state_3"),
+               types.InlineKeyboardButton(text="Профессионально-прикладная изическая подготовка",
+                                          callback_data="main_state_4")
 
                ]
 
@@ -28,19 +29,27 @@ def get_keyboard():
     return keyboard
 
 
-
-
-
 @dp.message_handler(commands="start")
 async def cmd_start(message: types.Message):
     button_to_start = types.KeyboardButton('Вернуться в начало')
     to_start_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True).add(button_to_start)
-    photo = open('start_image.png', 'rb')
-    await message.answer_photo(photo=photo, reply_markup=to_start_keyboard)
-    await message.answer("Выберите пункт", reply_markup=get_keyboard())
-
-
-
+    photo = open('start_gif.gif', 'rb')
+    me = await bot.get_me()
+    name_bot = me.first_name
+    txt = 'Привет, '+str(message.from_user.first_name)+ \
+          '\nДобро пожаловать в '+str(name_bot)+ \
+          '\n\n\"Я не сказал, что будет легко. Я лишь обещал открыть правду\" (Морфеус).' \
+          '\n\nА что выберете Вы ⁉️' \
+          '\nПуть к укреплению здоровья и повышению производительности труда или...' \
+          '\n\nНесмотря на выбор, Вы можете вернуться в это место и попробовать еще один путь.' \
+          '\nОдно правило - нажать' \
+          '\n(Вернуться в начало)' \
+          '\n\nКакой выбор примите сейчас ? ' \
+          '\n\n🔴самостоятельно - это похоже на детский' \
+          ' конструктор, детали которого Вы собираете, когда и как угодно.' \
+          '\n\n🔵с помощью бот-тренера - мы переносим Ваши риски на себя и предоставляем конкретный список действий.'
+    await message.answer_animation(animation=photo, reply_markup=to_start_keyboard)
+    await message.answer(txt, reply_markup=get_keyboard())
 
 
 @dp.callback_query_handler(Text(startswith="main_state"))
@@ -54,7 +63,7 @@ async def callbacks_num(call: types.CallbackQuery):
         await pfk.start_pfk(call)
     elif action == "2":
 
-        #await call.message.edit_text('2')
+        # await call.message.edit_text('2')
         # await call.message.answer('kek')
         await call.message.delete()
 
