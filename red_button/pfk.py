@@ -1,17 +1,18 @@
 from aiogram.dispatcher.filters import Text
-from aiogram import Bot, types
+from aiogram import types
 
-import gymnastics
-from bot_settings import bot, TOKEN, dp
-
-
+import red_button.gymnastics as gymnastics
+from bot_settings import dp
+import red_button.start_menu as sm
+import bot_texts as bt
 
 
 def get_keyboard1():
     buttons = [types.InlineKeyboardButton(text="Вводная гимнастика", callback_data="state_1.1"),
                types.InlineKeyboardButton(text="Физкультурная пауза", callback_data="state_1.2"),
                types.InlineKeyboardButton(text="Физкультурная минутка", callback_data="state_1.3"),
-               types.InlineKeyboardButton(text="Микропауза активного отдыха", callback_data="state_1.4")
+               types.InlineKeyboardButton(text="Микропауза активного отдыха", callback_data="state_1.4"),
+               types.InlineKeyboardButton(text="Назад", callback_data="state_1.5")
                ]
     keyboard = types.InlineKeyboardMarkup(row_width=1)
     keyboard.add(*buttons)
@@ -23,7 +24,7 @@ def get_keyboard1():
 
 
 async def start_pfk(call):
-    await call.message.answer("Выберите пункт", reply_markup=get_keyboard1())
+    await call.message.answer(bt.p_gymnastics_desc, reply_markup=get_keyboard1())
 
 
 @dp.callback_query_handler(Text(startswith="state_1"))
@@ -41,8 +42,13 @@ async def callbacks_num(call: types.CallbackQuery):
     elif action == "3":
 
         await call.message.edit_text('3')
-    elif action == "3":
+    elif action == "4":
 
-        await call.message.edit_text('3')
+        await call.message.edit_text('4')
+
+    elif action == "5":
+        await call.message.delete()
+        await sm.menu(call.message)
+
 
     await call.answer()

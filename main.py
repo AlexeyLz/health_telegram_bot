@@ -1,26 +1,14 @@
-# from telebot import TeleBot
-# from aiogram import types
-
-
 from aiogram.dispatcher.filters import Text
-from aiogram import Bot, types
-from aiogram.dispatcher import Dispatcher
+from aiogram import types
 from aiogram.utils import executor
-import textwrap
-from bot_settings import bot, TOKEN, dp
-import pfk
-import pr
-import ppzv
-import ppfp
+from bot_settings import bot, dp, path_to_main_gif
+from red_button import start_menu
+import bot_texts as bt
 
 
 def get_keyboard():
-    buttons = [types.InlineKeyboardButton(text="Производственная Гимнастика", callback_data="main_state_1"),
-               types.InlineKeyboardButton(text="Послетрудовая реабилитация", callback_data="main_state_2"),
-               types.InlineKeyboardButton(text="Профилактика профессиональных заболеваний во внерабочее время",
-                                          callback_data="main_state_3"),
-               types.InlineKeyboardButton(text="Профессионально-прикладная изическая подготовка",
-                                          callback_data="main_state_4")
+    buttons = [types.InlineKeyboardButton(text="🔴", callback_data="start_state_1"),
+               types.InlineKeyboardButton(text="🔵", callback_data="start_state_2"),
 
                ]
 
@@ -31,62 +19,38 @@ def get_keyboard():
 
 @dp.message_handler(commands="start")
 async def cmd_start(message: types.Message):
-    button_to_start = types.KeyboardButton('Вернуться в начало')
+    button_to_start = types.KeyboardButton(bt.back_to_start)
     to_start_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True).add(button_to_start)
-    photo = open('start_gif.gif', 'rb')
+    photo = open(path_to_main_gif, 'rb')
     me = await bot.get_me()
     name_bot = me.first_name
-    txt = 'Привет, '+str(message.from_user.first_name)+ \
-          '\nДобро пожаловать в '+str(name_bot)+ \
-          '\n\n\"Я не сказал, что будет легко. Я лишь обещал открыть правду\" (Морфеус).' \
-          '\n\nА что выберете Вы ⁉️' \
-          '\nПуть к укреплению здоровья и повышению производительности труда или...' \
-          '\n\nНесмотря на выбор, Вы можете вернуться в это место и попробовать еще один путь.' \
-          '\nОдно правило - нажать' \
-          '\n(Вернуться в начало)' \
-          '\n\nКакой выбор примите сейчас ? ' \
-          '\n\n🔴самостоятельно - это похоже на детский' \
-          ' конструктор, детали которого Вы собираете, когда и как угодно.' \
-          '\n\n🔵с помощью бот-тренера - мы переносим Ваши риски на себя и предоставляем конкретный список действий.'
+    txt = 'Привет, ' + str(message.from_user.first_name) + \
+          '\nДобро пожаловать в ' + str(name_bot) + bt.main_text
     await message.answer_animation(animation=photo, reply_markup=to_start_keyboard)
     await message.answer(txt, reply_markup=get_keyboard())
 
 
-@dp.callback_query_handler(Text(startswith="main_state"))
+@dp.callback_query_handler(Text(startswith="start_state"))
 async def callbacks_num(call: types.CallbackQuery):
     action = call.data.split("_")[2]
     if action == "1":
 
-        # await call.message.edit_text('Вы выбрали вводную гимнастику')
         await call.message.delete()
 
-        await pfk.start_pfk(call)
+        await start_menu.menu(call.message)
     elif action == "2":
 
-        # await call.message.edit_text('2')
-        # await call.message.answer('kek')
         await call.message.delete()
 
-        await pr.start_pr(call)
-    elif action == "3":
-
-        await call.message.edit_text('3')
-        await ppzv.start_ppzv(call)
-    elif action == "4":
-
-        await call.message.edit_text('3')
-        await ppfp.start_ppfp(call)
-    await call.answer()
+        print(2)
 
 
-@dp.message_handler(Text(equals="Вернуться в начало"))
+@dp.message_handler(Text(equals=bt.back_to_start))
 async def with_puree(message: types.Message):
     await cmd_start(message)
 
 
-@dp.message_handler(lambda message: message.text == "Я лох")
-async def without_puree(message: types.Message):
-    await message.reply("Да, ты лох!")
+
 
 
 @dp.message_handler(commands=['help'])
@@ -96,8 +60,7 @@ async def process_help_command(message: types.Message):
 
 @dp.message_handler()
 async def echo_message(msg: types.Message):
-    await bot.send_message(msg.from_user.id, 'Не понимаю тебя')
-    # await msg.answer('Неизвестно, что ты хотел узнать...')
+    await bot.send_message(msg.from_user.id, bt.do_not_understand)
 
 
 if __name__ == '__main__':
