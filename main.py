@@ -1,7 +1,7 @@
 from aiogram.dispatcher.filters import Text
 from aiogram import types
 from aiogram.utils import executor
-from bot_settings import bot, dp, path_to_main_gif
+from bot_settings import bot, dp, path_to_main_gif, sqlite_connection
 from red_button import start_menu
 import bot_texts as bt
 
@@ -17,7 +17,25 @@ def get_keyboard():
     return keyboard
 
 
+def save_user(user_id):
+    cursor = sqlite_connection.cursor()
+    cursor.execute('SELECT * FROM users WHERE (user_id =?)', (str(user_id),))
+    entry = cursor.fetchone()
+
+    if entry is None:
+        cursor.execute('INSERT INTO users VALUES(' + str(user_id) + ',0)')
+
+    sqlite_connection.commit()
+    cursor.close()
+
+
 @dp.message_handler(commands="start")
+async def console_start(message: types.Message):
+    await cmd_start(message)
+    print(message.from_user.id)
+    save_user(message.from_user.id)
+
+
 async def cmd_start(message: types.Message):
     button_to_start = types.KeyboardButton(bt.back_to_start)
     to_start_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True).add(button_to_start)
@@ -26,6 +44,7 @@ async def cmd_start(message: types.Message):
     name_bot = me.first_name
     txt = 'Привет, ' + str(message.from_user.first_name) + \
           '\nДобро пожаловать в ' + str(name_bot) + bt.main_text
+
     await message.answer_animation(animation=photo, reply_markup=to_start_keyboard)
     await message.answer(txt, reply_markup=get_keyboard())
 
@@ -48,9 +67,6 @@ async def callbacks_num(call: types.CallbackQuery):
 @dp.message_handler(Text(equals=bt.back_to_start))
 async def with_puree(message: types.Message):
     await cmd_start(message)
-
-
-
 
 
 @dp.message_handler(commands=['help'])

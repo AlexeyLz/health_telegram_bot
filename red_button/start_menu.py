@@ -5,7 +5,7 @@
 from aiogram.dispatcher.filters import Text
 from aiogram import types
 from bot_settings import bot, dp
-import red_button.pfk as pfk
+import red_button.pg as pfk
 import red_button.pr as pr
 import red_button.ppzv as ppzv
 import red_button.ppfp as ppfp
