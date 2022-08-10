@@ -4,10 +4,10 @@ import sqlite3
 import os
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
-print(os.getenv('TOKEN'))
+print(os.getenv('API_SECRET'))
 
 
-TOKEN = os.getenv('TOKEN') #open("token.txt", "r").readline()
+TOKEN = os.getenv('API_SECRET') #open("token.txt", "r").readline()
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
