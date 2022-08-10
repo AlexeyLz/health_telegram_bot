@@ -1,8 +1,13 @@
 from aiogram import Bot
 from aiogram.dispatcher import Dispatcher
 import sqlite3
-import token_settings
-TOKEN = token_settings.TOKEN    #open("token.txt", "r").readline()
+import os
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
+print(os.getenv('TOKEN'))
+
+
+TOKEN = os.getenv('TOKEN') #open("token.txt", "r").readline()
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)

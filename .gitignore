@@ -1,2 +1,4 @@
-token.txt
-token_settings.py
+.venv
+venv/
+__pycache__/
+.env
