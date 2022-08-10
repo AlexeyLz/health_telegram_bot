@@ -8,7 +8,7 @@ from bot_settings import bot, dp
 import red_button.pg as pfk
 import red_button.pr as pr
 import red_button.ppzv as ppzv
-import red_button.ppfp as ppfp
+
 import bot_texts as bt
 
 
@@ -51,8 +51,5 @@ async def callbacks_num(call: types.CallbackQuery):
 
         await call.message.edit_text('3')
         await ppzv.start_ppzv(call)
-    elif action == "4":
 
-        await call.message.edit_text('3')
-        await ppfp.start_ppfp(call)
     await call.answer()
