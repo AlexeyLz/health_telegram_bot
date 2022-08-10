@@ -1,8 +1,8 @@
 from aiogram import Bot
 from aiogram.dispatcher import Dispatcher
 import sqlite3
-
-TOKEN = open("token.txt", "r").readline()
+import token
+TOKEN = token.TOKEN    #open("token.txt", "r").readline()
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
