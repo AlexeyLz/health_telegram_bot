@@ -3,11 +3,10 @@ from aiogram.dispatcher import Dispatcher
 import sqlite3
 import os
 from dotenv import load_dotenv, find_dotenv
+
 load_dotenv(find_dotenv())
-print(os.getenv('API_SECRET'))
 
-
-TOKEN = os.getenv('API_SECRET') #open("token.txt", "r").readline()
+TOKEN = os.getenv('SECRET_TOKEN')
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
@@ -28,20 +27,16 @@ def create_database():
     cursor.close()
 
 
-
-
-
 def insert_data():
     sqlite_connection = sqlite3.connect('training_telegram_bot.db')
     cursor = sqlite_connection.cursor()
     sqlite_insert_blob_query = """INSERT INTO sedentary_work_table
                                       (description, image_path) VALUES (?, ?)"""
-    for i in range(1,9):
-        path = 'resources/'+str(i)+'.jpg'
-        description = open('resources/'+str(i)+'.txt').read()
+    for i in range(1, 9):
+        path = 'resources/' + str(i) + '.jpg'
+        description = open('resources/' + str(i) + '.txt').read()
         # Преобразование данных в формат кортежа
-        data_tuple = (description,path)
+        data_tuple = (description, path)
         cursor.execute(sqlite_insert_blob_query, data_tuple)
         sqlite_connection.commit()
     cursor.close()
-
