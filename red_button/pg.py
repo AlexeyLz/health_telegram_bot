@@ -8,10 +8,10 @@ import bot_texts as bt
 
 
 def get_keyboard1():
-    buttons = [types.InlineKeyboardButton(text="Вводная гимнастика", callback_data="pfk_state_1.1"),
-               types.InlineKeyboardButton(text="Физкультурная пауза", callback_data="pfk_state_1.2"),
-               types.InlineKeyboardButton(text="Физкультурная минутка", callback_data="pfk_state_1.3"),
-               types.InlineKeyboardButton(text="Микропауза активного отдыха", callback_data="pfk_state_1.4"),
+    buttons = [types.InlineKeyboardButton(text="Вводная часть", callback_data="pfk_state_1.1"),
+               types.InlineKeyboardButton(text="Пауза", callback_data="pfk_state_1.2"),
+               types.InlineKeyboardButton(text="Минутка", callback_data="pfk_state_1.3"),
+               types.InlineKeyboardButton(text="Микропауза", callback_data="pfk_state_1.4"),
                types.InlineKeyboardButton(text="Назад", callback_data="pfk_state_1.5")
                ]
     keyboard = types.InlineKeyboardMarkup(row_width=1)

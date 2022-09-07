@@ -8,8 +8,8 @@ import red_button.start_menu as sm
 
 
 def get_keyboard1():
-    buttons = [types.InlineKeyboardButton(text="Комплекс для людей, занятых тяжелым физическим трудом", callback_data="state_2.1"),
-               types.InlineKeyboardButton(text="Комплекс для людей, занятых нервно-напряженным трудом", callback_data="state_2.2"),
+    buttons = [types.InlineKeyboardButton(text="Для занятых тяжелым физическим трудом", callback_data="state_2.1"),
+               types.InlineKeyboardButton(text="Для занятых нервно-напряженным трудом", callback_data="state_2.2"),
                types.InlineKeyboardButton(text="Назад",
                                           callback_data="state_2.3")
 

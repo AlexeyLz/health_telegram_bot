@@ -28,7 +28,6 @@ async def callbacks_num(call: types.CallbackQuery):
         print(1)
         # await call.message.edit_text('Вы выбрали вводную гимнастику')
         await call.message.delete()
-        await call.message.answer('Ветка пока не закончена')
         await sc.start_sedentary_cards(call)
 
     elif action == "2":

@@ -1,7 +1,7 @@
 from aiogram.dispatcher.filters import Text
 from aiogram import types
 from aiogram.utils import executor
-from bot_settings import bot, dp, path_to_main_gif, sqlite_connection
+from bot_settings import bot, dp, path_to_main_gif, connection
 from red_button import start_menu
 import bot_texts as bt
 
@@ -9,7 +9,7 @@ import bot_texts as bt
 def get_keyboard():
     buttons = [types.InlineKeyboardButton(text="🔴", callback_data="start_state_1"),
                types.InlineKeyboardButton(text="🔵", callback_data="start_state_2"),
-
+               types.InlineKeyboardButton(text="❔", callback_data="start_state_3"),
                ]
 
     keyboard = types.InlineKeyboardMarkup(row_width=1)
@@ -18,14 +18,14 @@ def get_keyboard():
 
 
 def save_user(user_id):
-    cursor = sqlite_connection.cursor()
-    cursor.execute('SELECT * FROM users WHERE (user_id =?)', (str(user_id),))
+    cursor = connection.cursor()
+    cursor.execute('SELECT * FROM users WHERE user_id =%s', (str(user_id),))
     entry = cursor.fetchone()
 
     if entry is None:
         cursor.execute('INSERT INTO users VALUES(' + str(user_id) + ',0)')
 
-    sqlite_connection.commit()
+    connection.commit()
     cursor.close()
 
 
@@ -63,6 +63,12 @@ async def callbacks_num(call: types.CallbackQuery):
 
         print(2)
 
+    elif action == "3":
+
+        await call.message.delete()
+
+        await process_help_command(call.message)
+
 
 @dp.message_handler(Text(equals=bt.back_to_start))
 async def with_puree(message: types.Message):
@@ -71,7 +77,7 @@ async def with_puree(message: types.Message):
 
 @dp.message_handler(commands=['help'])
 async def process_help_command(message: types.Message):
-    await message.reply("Напиши мне что-нибудь, и я отпрпавлю этот текст тебе в ответ!")
+    await message.answer(bt.hello_text)
 
 
 @dp.message_handler()
