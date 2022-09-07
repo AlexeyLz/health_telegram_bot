@@ -8,8 +8,8 @@ import psycopg2
 
 #load_dotenv(find_dotenv())
 
-#TOKEN = os.getenv('TOKEN')
-TOKEN= '5403558275:AAE-oc5a_28rwwUfPwPfPqeEJa2q1dE7yrg'
+TOKEN = os.getenv('TOKEN')
+#TOKEN= '5403558275:AAE-oc5a_28rwwUfPwPfPqeEJa2q1dE7yrg'
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
 
