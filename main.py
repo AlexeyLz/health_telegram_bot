@@ -1,3 +1,5 @@
+import asyncio
+
 from aiogram.dispatcher.filters import Text
 from aiogram import types
 from aiogram.utils import executor
@@ -86,4 +88,4 @@ async def echo_message(msg: types.Message):
 
 
 if __name__ == '__main__':
-    executor.start_polling(dp)
+    executor.start_polling(dp, loop=asyncio.get_event_loop(), skip_updates=True)

@@ -6,7 +6,7 @@ from dotenv import load_dotenv, find_dotenv
 import urllib.parse as up
 import psycopg2
 
-#load_dotenv(find_dotenv())
+load_dotenv(find_dotenv())
 
 TOKEN = os.getenv('TOKEN')
 #TOKEN= '5403558275:AAE-oc5a_28rwwUfPwPfPqeEJa2q1dE7yrg'
