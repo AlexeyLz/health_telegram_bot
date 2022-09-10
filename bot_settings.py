@@ -1,4 +1,5 @@
 from aiogram import Bot
+from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from aiogram.dispatcher import Dispatcher
 import sqlite3
 import os
@@ -12,6 +13,9 @@ TOKEN = os.getenv('TOKEN')
 #TOKEN= '5403558275:AAE-oc5a_28rwwUfPwPfPqeEJa2q1dE7yrg'
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
+dp.middleware.setup(LoggingMiddleware())
+WEBHOOK_HOST = os.getenv('WEBHOOK_HOST')
+WEBHOOK_PATH = os.getenv('WEBHOOK_PATH')
 
 path_to_main_gif = 'resources/start_gif.gif'
 
@@ -26,34 +30,5 @@ connection = psycopg2.connect(database=url.path[1:],
                               port=url.port)
 
 
-def create_database():
-    cursor = connection.cursor()
-    cursor.execute("""CREATE TABLE IF NOT EXISTS sedentary_work_table
-                        (serial_id SERIAL,
-                         id INT,
-                         description TEXT,
-                         image_path TEXT)""")
-    cursor.execute("""CREATE TABLE IF NOT EXISTS users
-                        (
-                         user_id INTEGER,
-                         serial_id SERIAL,
-                         sedentary_work_exercise_number INTEGER)""")
-    connection.commit()
-    cursor.close()
 
-
-
-def insert_data():
-
-    cursor = connection.cursor()
-    postgres_insert_blob_query = """INSERT INTO sedentary_work_table
-                                      (id, description, image_path) VALUES (%s, %s, %s)"""
-    for i in range(1, 9):
-        path = 'resources/' + str(i) + '.jpg'
-        description = open('resources/' + str(i) + '.txt').read()
-        # Преобразование данных в формат кортежа
-        data_tuple = (i, description, path)
-        cursor.execute(postgres_insert_blob_query, data_tuple)
-        connection.commit()
-    cursor.close()
 
