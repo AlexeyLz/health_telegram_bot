@@ -1,49 +1,9 @@
-import asyncio
-
 from aiogram.dispatcher.filters import Text
 from aiogram import types
 from aiogram.utils import executor
-from bot_settings import bot, dp, path_to_main_gif, connection, WEBHOOK_HOST, WEBHOOK_PATH
+from bot_settings import bot, dp, path_to_main_gif, connection
 from red_button import start_menu
 import bot_texts as bt
-
-
-import logging
-
-
-from aiogram.dispatcher import Dispatcher
-from aiogram.dispatcher.webhook import SendMessage
-from aiogram.utils.executor import start_webhook
-
-
-
-
-WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
-
-WEBAPP_HOST = 'localhost'  # or ip
-WEBAPP_PORT = 8443
-
-async def on_startup(dp):
-    await bot.set_webhook(WEBHOOK_URL)
-
-
-async def on_shutdown(dp):
-    logging.warning('Shutting down..')
-    # insert code here to run it before shutdown
-
-    # Remove webhook (not acceptable in some cases)
-    await bot.delete_webhook()
-
-    # Close DB connection (if used)
-    await dp.storage.close()
-    await dp.storage.wait_closed()
-
-    logging.warning('Bye!')
-
-
-
-
-
 
 
 def get_keyboard():
@@ -126,13 +86,4 @@ async def echo_message(msg: types.Message):
 
 
 if __name__ == '__main__':
-    # executor.start_polling(dp, skip_updates=True, on_startup=console_start)
-    start_webhook(
-        dispatcher=dp,
-        webhook_path=WEBHOOK_PATH,
-        on_startup=on_startup,
-        on_shutdown=on_shutdown,
-        skip_updates=True,
-        host=WEBAPP_HOST,
-        port=WEBAPP_PORT,
-    )
+    executor.start_polling(dp, skip_updates=True)
