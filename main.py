@@ -1,6 +1,8 @@
 from aiogram.dispatcher.filters import Text
 from aiogram import types
 from aiogram.utils import executor
+from aiogram.utils.markdown import link
+
 from bot_settings import bot, dp, path_to_main_gif, connection
 from red_button import start_menu
 import bot_texts as bt
@@ -35,7 +37,7 @@ async def console_start(message: types.Message):
     print(message.from_user.id)
     save_user(message.from_user.id)
 
-
+@dp.message_handler(commands="back_to_start")
 async def cmd_start(message: types.Message):
     button_to_start = types.KeyboardButton(bt.back_to_start)
     to_start_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True).add(button_to_start)
@@ -60,8 +62,11 @@ async def callbacks_num(call: types.CallbackQuery):
     elif action == "2":
 
         await call.message.delete()
+        keyboard = types.InlineKeyboardMarkup()
+        button = types.InlineKeyboardButton('HealthyEmployer.exe', url='https://files.fm/u/3qyjtrqnu')
+        keyboard.add(button)
 
-        print(2)
+        await call.message.answer('🔗 Ссылка на скачивание программы', reply_markup=keyboard)
 
     elif action == "3":
 
