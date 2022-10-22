@@ -17,6 +17,7 @@ dp.middleware.setup(LoggingMiddleware())
 
 
 path_to_main_gif = 'resources/start_gif.gif'
+path_to_main_logo = 'resources/logo.png'
 
 #path_to_db_bot = os.getenv('path_to_db_bot')
 path_to_db_bot = 'postgres://fmmpoivj:U939QIpG1RAQj4C-IqHlIt7ai7Tx3B0O@abul.db.elephantsql.com/fmmpoivj'

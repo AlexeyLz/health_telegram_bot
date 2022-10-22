@@ -2,6 +2,9 @@ from aiogram.dispatcher.filters import Text
 from aiogram import types
 
 import red_button.pg_types.gymnastics as gymnastics
+import red_button.pg_types.pause as pause
+import red_button.pg_types.minute as minute
+import red_button.pg_types.micropause as micropause
 from bot_settings import dp
 import red_button.start_menu as sm
 import bot_texts as bt
@@ -37,14 +40,16 @@ async def callbacks_num(call: types.CallbackQuery):
         await gymnastics.start_gymnastics(call)
     elif action == "2":
 
-        await call.message.edit_text('2')
-        # await call.message.answer('kek')
+        await call.message.delete()
+        await pause.start_pause(call)
     elif action == "3":
 
-        await call.message.edit_text('3')
+        await call.message.delete()
+        await minute.start_minute(call)
     elif action == "4":
 
-        await call.message.edit_text('4')
+        await call.message.delete()
+        await micropause.start_micropause(call)
 
     elif action == "5":
         await call.message.delete()

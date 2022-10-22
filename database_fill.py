@@ -22,10 +22,11 @@ def insert_data():
     postgres_insert_blob_query = """INSERT INTO sedentary_work_table
                                       (id, description, image_path) VALUES (%s, %s, %s)"""
     for i in range(1, 9):
-        path = 'resources/' + str(i) + '.jpg'
+        path = 'resources/logo.png'
         description = open('resources/' + str(i) + '.txt').read()
         # Преобразование данных в формат кортежа
         data_tuple = (i, description, path)
         cursor.execute(postgres_insert_blob_query, data_tuple)
         connection.commit()
     cursor.close()
+insert_data()

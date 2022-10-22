@@ -1,5 +1,7 @@
 from aiogram.dispatcher.filters import Text
 from aiogram import types
+
+import bot_texts
 from bot_settings import connection
 import red_button.gymnastics_types.sedentary_work as sw
 from bot_settings import dp
@@ -10,6 +12,16 @@ import bot_texts as bt
 def get_keyboard():
     buttons = [types.InlineKeyboardButton(text="Далее", callback_data="sedentary_cards_state_1.1"),
                types.InlineKeyboardButton(text="Назад", callback_data="sedentary_cards_state_1.2"),
+
+               ]
+    keyboard = types.InlineKeyboardMarkup(row_width=1)
+    keyboard.add(*buttons)
+    return keyboard
+
+
+def get_end_keyboard():
+    buttons = [types.InlineKeyboardButton(text="Разумеется", callback_data="sedentary_cards_end_state_1.1"),
+               types.InlineKeyboardButton(text="Назад", callback_data="sedentary_cards_end_state_1.2"),
 
                ]
     keyboard = types.InlineKeyboardMarkup(row_width=1)
@@ -37,6 +49,31 @@ async def start_sedentary_cards(call):
     #     await call.message.answer('Непредвиденная ошибка. /start - чтобы исправить')
 
 
+@dp.callback_query_handler(Text(startswith="sedentary_cards_end_state_1"))
+async def callbacks_num(call: types.CallbackQuery):
+    action = call.data.split(".")[1]
+
+    if action == '1':
+        await call.message.delete()
+        await sw.start_sedentary_work(call)
+    elif action == '2':
+        await call.message.delete()
+        cursor = connection.cursor()
+        cursor.execute("SELECT sedentary_work_exercise_number FROM users WHERE user_id=%s", (call.from_user.id,))
+
+        number_exercise = cursor.fetchone()
+
+        number_exercise = number_exercise[0]
+        number_exercise -= 1
+        change_number_exercise_from_db(cursor, number_exercise, call.from_user.id)
+
+        card = Card(number_exercise)
+
+        await call.message.answer_photo(photo=card.get_image(), caption=card.get_description(),
+                                        reply_markup=get_keyboard())
+        del card
+
+
 @dp.callback_query_handler(Text(startswith="sedentary_cards_state_1"))
 async def callbacks_num(call: types.CallbackQuery):
     action = call.data.split(".")[1]
@@ -45,7 +82,7 @@ async def callbacks_num(call: types.CallbackQuery):
     cursor.execute("SELECT sedentary_work_exercise_number FROM users WHERE user_id=%s", (call.from_user.id,))
 
     number_exercise = cursor.fetchone()
-    print(11111111,number_exercise)
+
     number_exercise = number_exercise[0]
     cursor.execute("SELECT COUNT(*) from sedentary_work_table")
     table_size = list(cursor)[0][0]
@@ -53,7 +90,7 @@ async def callbacks_num(call: types.CallbackQuery):
 
         number_exercise += 1
         change_number_exercise_from_db(cursor, number_exercise, call.from_user.id)
-        print('number ex', number_exercise)
+
         await call.message.delete()
         if number_exercise <= table_size:
             card = Card(number_exercise)
@@ -61,13 +98,14 @@ async def callbacks_num(call: types.CallbackQuery):
                                             reply_markup=get_keyboard())
             del card
         else:
-            await call.message.answer(text='конец трени. нужно доработать.')
+
+            await call.message.answer(text=bot_texts.sedentary_end, reply_markup=get_end_keyboard())
 
     elif action == "2":
 
         await call.message.delete()
 
-        if number_exercise <= 0:
+        if number_exercise <= 1:
 
             number_exercise = 0
             change_number_exercise_from_db(cursor, number_exercise, call.from_user.id)

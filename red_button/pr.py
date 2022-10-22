@@ -34,10 +34,10 @@ async def callbacks_num(call: types.CallbackQuery):
         print(1)
         # await call.message.edit_text('Вы выбрали вводную гимнастику')
         #await call.message.delete()
-        await call.message.edit_text('физич')
+        await call.message.edit_text('Ветка пока не закончена')
     elif action == "2":
 
-        await call.message.edit_text('нервно-напр')
+        await call.message.edit_text('Ветка пока не закончена')
         # await call.message.answer('kek')
     elif action == "3":
 

@@ -1,9 +1,10 @@
+import aiogram
 from aiogram.dispatcher.filters import Text
 from aiogram import types
 from aiogram.utils import executor
 from aiogram.utils.markdown import link
 
-from bot_settings import bot, dp, path_to_main_gif, connection
+from bot_settings import bot, dp, path_to_main_gif, connection, path_to_main_logo
 from red_button import start_menu
 import bot_texts as bt
 
@@ -37,23 +38,27 @@ async def console_start(message: types.Message):
     print(message.from_user.id)
     save_user(message.from_user.id)
 
+
 @dp.message_handler(commands="back_to_start")
 async def cmd_start(message: types.Message):
     button_to_start = types.KeyboardButton(bt.back_to_start)
     to_start_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True).add(button_to_start)
-    photo = open(path_to_main_gif, 'rb')
+    photo_gif = open(path_to_main_gif, 'rb')
+    photo_logo = open(path_to_main_logo, 'rb')
     me = await bot.get_me()
     name_bot = me.first_name
     txt = 'Привет, ' + str(message.from_user.first_name) + \
           '\nДобро пожаловать в ' + str(name_bot) + bt.main_text
+    await message.answer(text='🏁    🏁   🏁   🏁   🏁', reply_markup=to_start_keyboard)
+    await message.answer_animation(animation=photo_gif, reply_markup=get_keyboard(), caption=txt)
 
-    await message.answer_animation(animation=photo, reply_markup=to_start_keyboard)
-    await message.answer(txt, reply_markup=get_keyboard())
+    # await message.answer('', reply_markup=)
 
 
 @dp.callback_query_handler(Text(startswith="start_state"))
 async def callbacks_num(call: types.CallbackQuery):
     action = call.data.split("_")[2]
+
     if action == "1":
 
         await call.message.delete()
