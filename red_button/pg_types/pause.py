@@ -4,9 +4,9 @@ from aiogram import types
 import red_button.pg as pfk
 from bot_settings import bot, dp
 import bot_texts as bt
-import red_button.gymnastics_types.brain_work as bw
-import red_button.gymnastics_types.physical_work as pw
-import red_button.gymnastics_types.mixed_work as mw
+import red_button.pause_types.brain_work as bw
+import red_button.pause_types.average_physical_labor as apl
+import red_button.pause_types.sedentary_labor as sl
 import red_button.gymnastics_types.sedentary_work as sw
 def get_keyboard():
     buttons = [types.InlineKeyboardButton(text="Умственный труд", callback_data="state_1_4.1"),
@@ -48,12 +48,12 @@ async def callbacks_num(call: types.CallbackQuery):
     elif action == "2":
 
         await call.message.delete()
-        await pw.start_physical_work(call)
+        await sl.start_sedentary_labor(call)
 
     elif action == "3":
 
         await call.message.delete()
-        await mw.start_mixed_work(call)
+        await apl.start_apl(call)
 
     elif action == "4":
 

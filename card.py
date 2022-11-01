@@ -1,8 +1,8 @@
 from bot_settings import connection
 class Card:
-    def __init__(self, number_exercise):
+    def __init__(self, number_exercise, table):
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM sedentary_work_table WHERE id=%s", (number_exercise,))
+        cursor.execute("SELECT * FROM "+table+" WHERE id=%s", (number_exercise,))
         card_data = cursor.fetchone()
         self.serial_id = card_data[0]
         self.id = card_data[1]

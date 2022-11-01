@@ -8,6 +8,7 @@ def create_database():
                          id INT,
                          description TEXT,
                          image_path TEXT)""")
+
     cursor.execute("""CREATE TABLE IF NOT EXISTS users
                         (
                          user_id INTEGER,
@@ -29,4 +30,4 @@ def insert_data():
         cursor.execute(postgres_insert_blob_query, data_tuple)
         connection.commit()
     cursor.close()
-insert_data()
+
