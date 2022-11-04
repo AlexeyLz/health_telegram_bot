@@ -13,7 +13,7 @@ def create_database():
                         (
                          user_id INTEGER,
                          serial_id SERIAL,
-                         sedentary_work_exercise_number INTEGER)""")
+                         exercise_number INTEGER)""")
     connection.commit()
     cursor.close()
 

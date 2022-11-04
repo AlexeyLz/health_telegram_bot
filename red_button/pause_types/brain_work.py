@@ -6,9 +6,12 @@ from bot_settings import dp
 import bot_texts as bt
 import red_button.pause_types.brain_work_cards as bwc
 
+STATE = 'brain_work'
+
+
 def get_keyboard():
-    buttons = [types.InlineKeyboardButton(text="Начать", callback_data="brain_work_state1_1.1"),
-               types.InlineKeyboardButton(text="Назад", callback_data="brain_work_state1_1.2"),
+    buttons = [types.InlineKeyboardButton(text="Начать", callback_data=STATE + "_state1_1.1"),
+               types.InlineKeyboardButton(text="Назад", callback_data=STATE + "_state1_1.2"),
 
                ]
     keyboard = types.InlineKeyboardMarkup(row_width=1)
@@ -16,28 +19,21 @@ def get_keyboard():
     return keyboard
 
 
-
-
-
-
 async def start_brainwork(call):
     await call.message.answer(bt.brain_work_desc, reply_markup=get_keyboard())
 
 
-@dp.callback_query_handler(Text(startswith="brain_work_state1_1"))
+@dp.callback_query_handler(Text(startswith=STATE + "_state1_1"))
 async def callbacks_num(call: types.CallbackQuery):
     action = call.data.split(".")[1]
     if action == "1":
-        print(12222)
         # await call.message.edit_text('Вы выбрали вводную гимнастику')
         await call.message.delete()
 
         await bwc.start_brainwork_cards(call)
     elif action == "2":
 
-
         await call.message.delete()
         await pause.start_pause(call)
-
 
     await call.answer()

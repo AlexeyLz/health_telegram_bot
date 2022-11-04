@@ -4,8 +4,12 @@ from aiogram import Bot, types
 import bot_texts as bt
 from bot_settings import bot, TOKEN, dp
 import red_button.start_menu as sm
-
-
+import red_button.ppzv_types.breathing_exercises as be
+import red_button.ppzv_types.prevention_of_osteochondrosis as po
+import red_button.ppzv_types.with_increased_neuro_emotional_stress as win
+import red_button.ppzv_types.flat_feet_and_varicose_veins as ffv
+import red_button.ppzv_types.strengthening_the_arch_of_the_foot_with_flat_feet as sta
+import red_button.ppzv_types.prevention_of_joint_diseases.prevention_of_joint_diseases as prev_of_j
 def get_keyboard1():
     buttons = [types.InlineKeyboardButton(text="Дыхательные упражнения", callback_data="state_3.1"),
                types.InlineKeyboardButton(text="Профилактика Остеохондроза", callback_data="state_3.2"),
@@ -39,25 +43,28 @@ async def callbacks_num(call: types.CallbackQuery):
     if action == "1":
         print(1)
         # await call.message.edit_text('Вы выбрали вводную гимнастику')
-        #await call.message.delete()
-        await call.message.edit_text('1')
+        await call.message.delete()
+        await be.start_be(call)
     elif action == "2":
 
-        await call.message.edit_text('нервно-напр2')
-        # await call.message.answer('kek')
+        await call.message.delete()
+        await po.start_po(call)
     elif action == "3":
 
-        await call.message.edit_text('нервно-напр3')
+        await call.message.delete()
+        await win.start_win(call)
     elif action == "4":
-
-        await call.message.edit_text('нервно-напр4')
+        await call.message.delete()
+        await ffv.start_ffv(call)
     elif action == "5":
 
-        await call.message.edit_text('нервно-напр5')
+        await call.message.delete()
+        await sta.start_sta(call)
         # await call.message.answer('kek')
     elif action == "6":
 
-        await call.message.edit_text('нервно-напр6')
+        await call.message.delete()
+        await prev_of_j.start_prevention_of_joint(call)
     elif action == "7":
 
         await call.message.delete()

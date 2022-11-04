@@ -39,6 +39,22 @@ async def console_start(message: types.Message):
     save_user(message.from_user.id)
 
 
+@dp.message_handler(commands="about")
+async def console_start(message: types.Message):
+    keyboard = types.InlineKeyboardMarkup()
+    button = types.InlineKeyboardButton('Our Site', url='https://healthyemployer.info/')
+    keyboard.add(button)
+    button = types.InlineKeyboardButton('Our Instagram',
+                                        url='https://www.instagram.com/healthyemployer/')
+    keyboard.add(button)
+    button = types.InlineKeyboardButton('Our Telegram',
+                                        url='https://t.me/HealthyEmployer')
+    keyboard.add(button)
+    text = '..::Healthy Employer::..\n\nНаш сайт\nhttps://healthyemployer.info/\n\nНаш ' \
+           'Instagram\nhttps://www.instagram.com/healthyemployer/\n\nНаш Telegram\nhttps://t.me/HealthyEmployer'
+    await message.answer(text, reply_markup=keyboard)
+
+
 @dp.message_handler(commands="back_to_start")
 async def cmd_start(message: types.Message):
     button_to_start = types.KeyboardButton(bt.back_to_start)
@@ -49,7 +65,7 @@ async def cmd_start(message: types.Message):
     name_bot = me.first_name
     txt = 'Привет, ' + str(message.from_user.first_name) + \
           '\nДобро пожаловать в ' + str(name_bot) + bt.main_text
-    await message.answer(text='🏁    🏁   🏁   🏁   🏁', reply_markup=to_start_keyboard)
+    await message.answer(text='..::Healthy Employer::..', reply_markup=to_start_keyboard)
     await message.answer_animation(animation=photo_gif, reply_markup=get_keyboard(), caption=txt)
 
     # await message.answer('', reply_markup=)

@@ -49,7 +49,7 @@ async def callbacks_num(call: types.CallbackQuery):
         await pr.start_pr(call)
     elif action == "3":
 
-        await call.message.edit_text('3')
+        await call.message.delete()
         await ppzv.start_ppzv(call)
     elif action == "4":
 

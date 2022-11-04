@@ -6,10 +6,12 @@ import red_button.gymnastics_types.sedentary_cards as sc
 from bot_settings import dp
 import bot_texts as bt
 
+STATE = 'sedentary_work'
+
 
 def get_keyboard():
-    buttons = [types.InlineKeyboardButton(text="Начать", callback_data="sedentary_work_state_1.1"),
-               types.InlineKeyboardButton(text="Назад", callback_data="sedentary_work_state_1.2"),
+    buttons = [types.InlineKeyboardButton(text="Начать", callback_data=STATE + "_state_1.1"),
+               types.InlineKeyboardButton(text="Назад", callback_data=STATE + "_state_1.2"),
 
                ]
     keyboard = types.InlineKeyboardMarkup(row_width=1)
@@ -21,7 +23,7 @@ async def start_sedentary_work(call):
     await call.message.answer(bt.physical_work_desc, reply_markup=get_keyboard())
 
 
-@dp.callback_query_handler(Text(startswith="sedentary_work_state_1"))
+@dp.callback_query_handler(Text(startswith= STATE+"_state_1"))
 async def callbacks_num(call: types.CallbackQuery):
     action = call.data.split(".")[1]
     if action == "1":

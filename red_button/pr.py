@@ -5,7 +5,8 @@ import bot_texts as bt
 from bot_settings import bot, TOKEN, dp
 import red_button.start_menu as sm
 
-
+import red_button.pr_types.for_those_employed_in_heavy_physical_labor as fte
+import red_button.pr_types.for_those_employed_in_nervously_intense_work as ften
 
 def get_keyboard1():
     buttons = [types.InlineKeyboardButton(text="Для занятых тяжелым физическим трудом", callback_data="state_2.1"),
@@ -33,12 +34,12 @@ async def callbacks_num(call: types.CallbackQuery):
     if action == "1":
         print(1)
         # await call.message.edit_text('Вы выбрали вводную гимнастику')
-        #await call.message.delete()
-        await call.message.edit_text('Ветка пока не закончена')
+        await call.message.delete()
+        await fte.start_fte(call)
     elif action == "2":
+        await call.message.delete()
+        await ften.start_ften(call)
 
-        await call.message.edit_text('Ветка пока не закончена')
-        # await call.message.answer('kek')
     elif action == "3":
 
         await call.message.delete()

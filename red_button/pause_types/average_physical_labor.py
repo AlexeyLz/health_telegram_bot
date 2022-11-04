@@ -6,10 +6,12 @@ from bot_settings import dp
 import bot_texts as bt
 import red_button.pause_types.average_physical_labor_cards as apc
 
+STATE = 'average_physical_labor'
+
 
 def get_keyboard():
-    buttons = [types.InlineKeyboardButton(text="Начать", callback_data="average_physical_labor_state1_1.1"),
-               types.InlineKeyboardButton(text="Назад", callback_data="average_physical_labor_state1_1.2"),
+    buttons = [types.InlineKeyboardButton(text="Начать", callback_data=STATE + "_state1_1.1"),
+               types.InlineKeyboardButton(text="Назад", callback_data=STATE + "_state1_1.2"),
 
                ]
     keyboard = types.InlineKeyboardMarkup(row_width=1)
@@ -21,11 +23,10 @@ async def start_apl(call):
     await call.message.answer(bt.brain_work_desc, reply_markup=get_keyboard())
 
 
-@dp.callback_query_handler(Text(startswith="average_physical_labor_state1_1"))
+@dp.callback_query_handler(Text(startswith=STATE + "_state1_1"))
 async def callbacks_num(call: types.CallbackQuery):
     action = call.data.split(".")[1]
     if action == "1":
-        print(12222)
         # await call.message.edit_text('Вы выбрали вводную гимнастику')
         await call.message.delete()
 

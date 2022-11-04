@@ -4,10 +4,10 @@ from aiogram import types
 import red_button.pg as pfk
 from bot_settings import bot, dp
 import bot_texts as bt
-import red_button.gymnastics_types.brain_work as bw
-import red_button.gymnastics_types.physical_work as pw
-import red_button.gymnastics_types.mixed_work as mw
-import red_button.gymnastics_types.sedentary_work as sw
+import red_button.micropause_types.eye_fatigue as ef
+import red_button.micropause_types.improves_cerebral_circulation as ic
+import red_button.micropause_types.reducing_the_tension_of_the_nervous_system as rt
+import red_button.micropause_types.increasing_excitability_of_the_nervous_system as ie
 def get_keyboard():
     buttons = [types.InlineKeyboardButton(text="При утомлении глаз", callback_data="state_1_2.1"),
                types.InlineKeyboardButton(text="Улучшающая мозговое кровообращение", callback_data="state_1_2.2"),
@@ -33,7 +33,7 @@ async def callbacks_num(call: types.CallbackQuery):
     action = call.data.split(".")[1]
     if action == "1":
         await call.message.delete()
-        await bw.start_brainwork(call)
+        await ef.start_ef(call)
         # with open('resources//1.1.1.txt', 'r', encoding='utf-8') as file:
         #     text = file.readline()
         # await call.message.delete()
@@ -48,17 +48,17 @@ async def callbacks_num(call: types.CallbackQuery):
     elif action == "2":
 
         await call.message.delete()
-        await pw.start_physical_work(call)
+        await ic.start_ic(call)
 
     elif action == "3":
 
         await call.message.delete()
-        await mw.start_mixed_work(call)
+        await rt.start_rt(call)
 
     elif action == "4":
 
         await call.message.delete()
-        await sw.start_sedentary_work(call)
+        await ie.start_ie(call)
     elif action == "5":
         await call.message.delete()
         await pfk.start_pfk(call)
