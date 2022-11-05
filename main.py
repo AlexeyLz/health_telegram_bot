@@ -117,7 +117,7 @@ async def process_help_command(message: types.Message):
 
 
 @dp.message_handler(commands=['off'])
-async def process_help_command(message: types.Message):
+async def process_off_command(message: types.Message):
     await message.answer('Команда находится в разработке.')
 
 
