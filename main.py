@@ -39,6 +39,16 @@ async def console_start(message: types.Message):
     save_user(message.from_user.id)
 
 
+@dp.message_handler(commands="support")
+async def console_start(message: types.Message):
+    keyboard = types.InlineKeyboardMarkup()
+    button = types.InlineKeyboardButton('Написать в чат',
+                                        url='https://t.me/healthyemployersupport')
+    keyboard.add(button)
+    text = 'Нужна помощь или заметили баг?\nНапиши в чат!'
+    await message.answer(text, reply_markup=keyboard)
+
+
 @dp.message_handler(commands="about")
 async def console_start(message: types.Message):
     keyboard = types.InlineKeyboardMarkup()
@@ -104,6 +114,11 @@ async def with_puree(message: types.Message):
 @dp.message_handler(commands=['help'])
 async def process_help_command(message: types.Message):
     await message.answer(bt.hello_text)
+
+
+@dp.message_handler(commands=['off'])
+async def process_help_command(message: types.Message):
+    await message.answer('Команда находится в разработке.')
 
 
 @dp.message_handler()

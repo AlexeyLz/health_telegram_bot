@@ -26,7 +26,7 @@ def get_keyboard1():
 
 
 async def start_prevention_of_joint(call):
-    await call.message.answer("Какой сюда текст???", reply_markup=get_keyboard1())
+    await call.message.answer("👇Выберите последнюю дверь 👇", reply_markup=get_keyboard1())
 
 
 @dp.callback_query_handler(Text(startswith="state_prev3"))
