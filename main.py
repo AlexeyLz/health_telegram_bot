@@ -26,7 +26,7 @@ def save_user(user_id):
     entry = cursor.fetchone()
 
     if entry is None:
-        cursor.execute('INSERT INTO users VALUES(' + str(user_id) + ',0)')
+        cursor.execute('INSERT INTO users VALUES(' + str(user_id) + ',0,0)')
 
     connection.commit()
     cursor.close()
@@ -37,6 +37,8 @@ async def console_start(message: types.Message):
     await cmd_start(message)
     print(message.from_user.id)
     save_user(message.from_user.id)
+
+
 
 
 @dp.message_handler(commands="support")
