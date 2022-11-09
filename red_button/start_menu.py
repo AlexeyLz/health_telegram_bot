@@ -54,6 +54,6 @@ async def callbacks_num(call: types.CallbackQuery):
     elif action == "4":
 
         await call.message.delete()
-        await m_menu.cmd_start(call.message)
+        await m_menu.start_training(call.message)
 
     await call.answer()
