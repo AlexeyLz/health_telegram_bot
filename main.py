@@ -3,7 +3,7 @@ from aiogram.dispatcher.filters import Text
 from aiogram import types
 from aiogram.utils import executor
 import languages
-from bot_settings import bot, dp, path_to_main_gif, connection, path_to_main_logo
+from bot_settings import bot, dp, path_to_main_gif, connection, path_to_main_logo, path_to_main_logo_jpg
 from red_button import start_menu
 import bot_texts as bt
 
@@ -82,7 +82,9 @@ async def about(message: types.Message):
 
 
 async def start_bot(message: types.Message):
-    await message.answer(text='..::Healthy Employer::..', reply_markup=get_start_keyboard())
+    photo_logo = open(path_to_main_logo_jpg, 'rb')
+    txt = 'Я подручный бот-тренер Healthy Employer\n\n'+'Чем могу помочь?'
+    await message.answer_photo(caption=txt, reply_markup=get_start_keyboard(),photo=photo_logo)
 
 
 async def start_training(message: types.Message):
@@ -139,7 +141,7 @@ async def process_help_command(message: types.Message):
 
 
 @dp.message_handler(commands=['donate'])
-async def process_help_command(message: types.Message):
+async def process_donate_command(message: types.Message):
     await message.answer('Для связи - @Oleksimus')
 
 

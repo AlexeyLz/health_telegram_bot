@@ -18,6 +18,7 @@ dp.middleware.setup(LoggingMiddleware())
 
 path_to_main_gif = 'resources/start_gif.gif'
 path_to_main_logo = 'resources/logo.png'
+path_to_main_logo_jpg = 'resources/logo.jpg'
 
 path_to_db_bot = os.getenv('path_to_db_bot')
 
