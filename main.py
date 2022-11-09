@@ -140,6 +140,9 @@ async def process_help_command(message: types.Message):
     await message.answer(bt.hello_text)
 
 
+async def cmd_start(message: types.Message):
+    await start_bot(message)
+
 @dp.message_handler(commands=['donate'])
 async def process_donate_command(message: types.Message):
     await message.answer('Для связи - @Oleksimus')
