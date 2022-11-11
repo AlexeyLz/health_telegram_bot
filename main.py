@@ -83,8 +83,8 @@ async def about(message: types.Message):
 
 async def start_bot(message: types.Message):
     photo_logo = open(path_to_main_logo_jpg, 'rb')
-    txt = 'Я подручный бот-тренер Healthy Employer\n\n'+'Чем могу помочь?'
-    await message.answer_photo(caption=txt, reply_markup=get_start_keyboard(),photo=photo_logo)
+    txt = 'Я подручный бот-тренер Healthy Employer\n\n' + 'Чем могу помочь?'
+    await message.answer_photo(caption=txt, reply_markup=get_start_keyboard(), photo=photo_logo)
 
 
 async def start_training(message: types.Message):
@@ -143,9 +143,15 @@ async def process_help_command(message: types.Message):
 async def cmd_start(message: types.Message):
     await start_bot(message)
 
+
 @dp.message_handler(commands=['donate'])
 async def process_donate_command(message: types.Message):
-    await message.answer('Для связи - @Oleksimus')
+    keyboard = types.InlineKeyboardMarkup()
+    button = types.InlineKeyboardButton('Поддержать',
+                                        url='https://www.patreon.com/healthyemployer')
+    keyboard.add(button)
+    text = 'Поддержать нас подпиской - https://www.patreon.com/healthyemployer'
+    await message.answer(text, reply_markup=keyboard)
 
 
 @dp.message_handler(commands=['off'])
