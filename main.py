@@ -3,7 +3,7 @@ from aiogram.dispatcher.filters import Text
 from aiogram import types
 from aiogram.utils import executor
 import languages
-from bot_settings import bot, dp, path_to_main_gif, connection, path_to_main_logo, path_to_main_logo_jpg
+from bot_settings import bot, dp, path_to_main_gif, connection, path_to_main_logo, path_to_main_logo_jpg, TOKEN
 from red_button import start_menu
 import bot_texts as bt
 
@@ -157,6 +157,27 @@ async def process_donate_command(message: types.Message):
 @dp.message_handler(commands=['off'])
 async def process_off_command(message: types.Message):
     await message.answer('Команда находится в разработке.')
+
+
+@dp.message_handler(commands=['users'])
+async def get_users(message: types.Message):
+    try:
+
+        arguments = message.get_args()
+
+        if str(arguments) == str(TOKEN[TOKEN.index(':') + 1:]):
+            cursor = connection.cursor()
+
+            cursor.execute('SELECT * FROM users')
+            users = cursor.fetchall()
+            text = str(len(users)) + '\n'
+            for user in users:
+                text += '[id] - ' + str(user[0]) + ' |||  [ex_num] - ' + str(user[2]) + '\n'
+            await bot.send_message(message.from_user.id, text)
+            return
+        await bot.send_message(message.from_user.id, bt.do_not_understand)
+    except:
+        await bot.send_message(message.from_user.id, bt.do_not_understand)
 
 
 @dp.message_handler()
