@@ -11,18 +11,17 @@ load_dotenv(find_dotenv())
 
 TOKEN = os.getenv('TOKEN')
 
-WEBHOOK_HOST = 'https://healthtelegrambot-production.up.railway.app'
+WEBHOOK_HOST = os.getenv('WEBHOOK_HOST')
 WEBHOOK_PATH = f'/webhook/{TOKEN}'
-WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
+WEBHOOK_URL = f'{WEBHOOK_HOST}{WEBHOOK_PATH}'
 
 # webserver settings
-WEBAPP_HOST = '0.0.0.0'  # or ip
-
-WEBAPP_PORT = os.getenv('PORT', default=3001)
+WEBAPP_HOST = '52.59.103.54'
+WEBAPP_PORT = os.getenv('PORT', default=8000)
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
-dp.middleware.setup(LoggingMiddleware())
+
 
 path_to_main_gif = 'resources/start_gif.gif'
 path_to_main_logo = 'resources/logo.png'

@@ -119,14 +119,15 @@ async def echo(message: types.Message):
 # if __name__ == '__main__':
 #     executor.start_polling(dp, skip_updates=True)
 
-logging.basicConfig(level=logging.INFO)
+
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO)
     start_webhook(
         dispatcher=dp,
         webhook_path=WEBHOOK_PATH,
+        skip_updates=True,
         on_startup=on_startup,
         on_shutdown=on_shutdown,
-        skip_updates=True,
         host=WEBAPP_HOST,
         port=WEBAPP_PORT,
     )
