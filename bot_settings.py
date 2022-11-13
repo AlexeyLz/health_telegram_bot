@@ -11,8 +11,8 @@ load_dotenv(find_dotenv())
 
 TOKEN = os.getenv('TOKEN')
 
-WEBHOOK_HOST = 'https://healthtelegrambot-production.up.railway.app/'
-WEBHOOK_PATH = ""
+WEBHOOK_HOST = 'https://healthtelegrambot-production.up.railway.app'
+WEBHOOK_PATH = f'/webhook/{TOKEN}'
 WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 
 # webserver settings
