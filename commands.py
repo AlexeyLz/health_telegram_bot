@@ -1,10 +1,19 @@
 import aiogram
 from aiogram.dispatcher.filters import Text
 from aiogram import types
-from bot_settings import bot, dp, path_to_main_gif, connection, path_to_main_logo, path_to_main_logo_jpg, TOKEN
+from bot_settings import bot, dp, path_to_main_gif, connection, path_to_main_logo, path_to_main_logo_jpg, TOKEN, \
+    WEBHOOK_URL
 from red_button import start_menu
 import bot_texts as bt
 from main import start_bot, save_user
+
+
+async def on_startup(dispatcher):
+    await bot.set_webhook(WEBHOOK_URL, drop_pending_updates=True)
+
+
+async def on_shutdown(dispatcher):
+    await bot.delete_webhook()
 
 
 @dp.message_handler(commands="start")

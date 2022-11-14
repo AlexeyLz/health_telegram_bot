@@ -99,14 +99,7 @@ async def cmd_start(message: types.Message):
     await start_bot(message)
 
 
-# if __name__ == '__main__':
-#     executor.start_polling(dp, skip_updates=True)
-async def on_startup(dispatcher):
-    await bot.set_webhook(WEBHOOK_URL, drop_pending_updates=True)
 
-
-async def on_shutdown(dispatcher):
-    await bot.delete_webhook()
 
 
 @dp.message_handler()
