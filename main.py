@@ -108,10 +108,6 @@ async def on_startup(dispatcher):
 async def on_shutdown(dispatcher):
     await bot.delete_webhook()
 
-@dp.message_handler()
-async def echo(message: types.Message):
-    await message.answer(message.text)
-
 
 # if __name__ == '__main__':
 #     executor.start_polling(dp, skip_updates=True)
@@ -128,6 +124,3 @@ if __name__ == '__main__':
         host=WEBAPP_HOST,
         port=WEBAPP_PORT,
     )
-
-
-
