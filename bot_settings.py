@@ -12,7 +12,7 @@ load_dotenv(find_dotenv())
 TOKEN = os.getenv('TOKEN')
 
 WEBHOOK_HOST = os.getenv('WEBHOOK_HOST')
-WEBHOOK_PATH = f'/webhook/{TOKEN}'
+WEBHOOK_PATH = f'/'
 WEBHOOK_URL = f'{WEBHOOK_HOST}{WEBHOOK_PATH}'
 
 # webserver settings
