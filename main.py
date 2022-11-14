@@ -106,10 +106,7 @@ async def on_startup(dispatcher):
 
 
 async def on_shutdown(dispatcher):
-    logging.warning('Shutting down..')
     await bot.delete_webhook()
-    connection.close()
-
 
 @dp.message_handler()
 async def echo(message: types.Message):
