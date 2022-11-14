@@ -109,6 +109,9 @@ async def on_shutdown(dispatcher):
     await bot.delete_webhook()
 
 
+@dp.message_handler()
+async def echo(message: types.Message):
+    await message.answer("приветик")
 # if __name__ == '__main__':
 #     executor.start_polling(dp, skip_updates=True)
 
