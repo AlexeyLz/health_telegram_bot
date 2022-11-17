@@ -11,11 +11,8 @@ load_dotenv(find_dotenv())
 
 TOKEN = os.getenv('TOKEN')
 
-
-
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
-
 
 path_to_main_gif = 'resources/start_gif.gif'
 path_to_main_logo = 'resources/logo.png'

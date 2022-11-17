@@ -7,5 +7,3 @@ def change_database():
 
     connection.commit()
     cursor.close()
-
-

@@ -13,7 +13,7 @@ class Card:
         self.video_url = 'https://media.publit.io/file/' + card_data[3] + '.mp4'
 
     def get_description(self):
-        return self.description+'\n'+self.video_url
+        return self.description + '\n' + self.video_url
 
     def get_image(self):
         return open(self.image_path, 'rb')

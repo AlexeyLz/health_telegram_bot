@@ -1,11 +1,8 @@
-
 from aiogram.dispatcher.filters import Text
 from aiogram import types
 
-
 import main
 from bot_settings import bot, dp, path_to_main_gif, connection, path_to_main_logo
-
 
 
 def get_languages_keyboard():
@@ -40,4 +37,3 @@ async def callbacks_num_start(call: types.CallbackQuery):
     elif action == '4':
         await call.message.delete()
         await main.start_bot(call.message)
-
