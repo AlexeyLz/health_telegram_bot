@@ -4,7 +4,7 @@ from aiogram import types
 import red_button.prevention as ppzv
 from bot_settings import dp
 import bot_texts as bt
-import red_button.ppzv_types.with_increased_neuro_emotional_stress_cards as winc
+import red_button.prevention_types.with_increased_neuro_emotional_stress_cards as winc
 
 STATE = 'with_increased_neuro_emotional_stress'
 

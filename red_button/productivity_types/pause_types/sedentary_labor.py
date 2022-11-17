@@ -4,9 +4,9 @@ from aiogram import types
 import red_button.productivity_types.pause as pause
 from bot_settings import dp
 import bot_texts as bt
-import red_button.pause_types.sedentary_labor_cards as slc
+import red_button.productivity_types.pause_types.sedentary_labor_cards as slc
 
-STATE = 'sedentary_labor'
+STATE = 'pause_sedentary_labor'
 
 
 def get_keyboard():

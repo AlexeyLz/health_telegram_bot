@@ -2,11 +2,11 @@ from aiogram.dispatcher.filters import Text
 from aiogram import types
 
 import red_button.productivity_types.micropause as micropause
-import red_button.productivity_types.micropause_types.increasing_excitability_of_the_nervous_system_cards as iec
+import red_button.productivity_types.micropause_types.increase_of_the_CNS_tension_cards as iec
 from bot_settings import dp
 import bot_texts as bt
 
-STATE = 'increasing_excitability_of_the_nervous_system'
+STATE = 'micropause_increase_of_the_CNS_tension'
 
 
 def get_keyboard():

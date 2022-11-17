@@ -3,14 +3,14 @@ from aiogram import types
 
 import bot_texts
 from bot_settings import connection
-import red_button.productivity_types.introduction_types.sedentary_work as sw
+import red_button.productivity_types.introduction_types.sedentary_labor as sw
 from bot_settings import dp
 from card import Card
 import main
 
-TABLE_NAME = 'sedentary_work_table'
-USUAL_STATE = 'sedentary_cards'
-END_STATE = 'sedentary_cards_end'
+TABLE_NAME = 'introduction_sedentary_labor'
+USUAL_STATE = 'introduction_sedentary_labor_cards'
+END_STATE = 'introduction_sedentary_labor_cards_end'
 
 
 def get_keyboard():

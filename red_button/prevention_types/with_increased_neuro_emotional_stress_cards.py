@@ -3,7 +3,7 @@ from aiogram import types
 import main
 import bot_texts
 from bot_settings import connection
-import red_button.ppzv_types.with_increased_neuro_emotional_stress as win
+import red_button.prevention_types.with_increased_neuro_emotional_stress as win
 from bot_settings import dp
 from card import Card
 

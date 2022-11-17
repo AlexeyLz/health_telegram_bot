@@ -2,11 +2,11 @@ from aiogram.dispatcher.filters import Text
 from aiogram import types
 
 import red_button.productivity as pfk
-from bot_settings import bot, dp
+from bot_settings import dp
 import bot_texts as bt
-import red_button.pause_types.brain_work as bw
-import red_button.pause_types.sedentary_labor as sl
-import red_button.pause_types.hard_physical_labor as hpl
+import red_button.productivity_types.pause_types.mental_activity as bw
+import red_button.productivity_types.pause_types.sedentary_labor as sl
+import red_button.productivity_types.pause_types.physical_activity as hpl
 
 
 def get_keyboard():

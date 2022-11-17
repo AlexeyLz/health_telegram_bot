@@ -4,9 +4,9 @@ from aiogram import types
 import red_button.productivity_types.minute as minute
 from bot_settings import dp
 import bot_texts as bt
-import red_button.productivity_types.minute_types.relieve_fatigue_from_the_muscles_of_the_hand_cards as rfc
+import red_button.productivity_types.minute_types.brushes_cards as rfc
 
-STATE = 'relieve_fatigue_from_the_muscles_of_the_hand'
+STATE = 'minute_brushes'
 
 
 def get_keyboard():

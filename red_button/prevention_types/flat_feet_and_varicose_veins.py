@@ -4,7 +4,7 @@ from aiogram import types
 import red_button.prevention as ppzv
 from bot_settings import dp
 import bot_texts as bt
-import red_button.ppzv_types.flat_feet_and_varicose_veins_cards as ffvc
+import red_button.prevention_types.flat_feet_and_varicose_veins_cards as ffvc
 
 STATE = 'flat_feet_and_varicose_veins'
 

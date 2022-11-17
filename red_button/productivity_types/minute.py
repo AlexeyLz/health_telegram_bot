@@ -2,17 +2,17 @@ from aiogram.dispatcher.filters import Text
 from aiogram import types
 
 import red_button.productivity as pfk
-from bot_settings import bot, dp
+from bot_settings import dp
 import bot_texts as bt
-import red_button.minute_types.general_impact as gi
-import red_button.minute_types.reduce_eye_fatigue as ref
-import red_button.minute_types.removing_fatigue_from_the_shoulder_girdle_and_arms as rem_fatig
-import red_button.minute_types.relieve_fatigue_from_the_muscles_of_the_hand as rff
-import red_button.minute_types.relax_back_muscles_and_improve_posture as rbm
-import red_button.minute_types.rest_leg_muscles as rlm
-import red_button.minute_types.relieve_fatigue_from_the_lower_back_and_back as rfb
-import red_button.minute_types.increase_blood_circulation_in_the_legs_and_pelvis as ibc
-import red_button.minute_types.rest_of_the_neck_muscles as ron
+import red_button.productivity_types.minute_types.general_activity as gi
+import red_button.productivity_types.minute_types.eyes as ref
+import red_button.productivity_types.minute_types.arms as rem_fatig
+import red_button.productivity_types.minute_types.brushes as rff
+import red_button.productivity_types.minute_types.back as rbm
+import red_button.productivity_types.minute_types.legs as rlm
+import red_button.productivity_types.minute_types.loin as rfb
+import red_button.productivity_types.minute_types.pelvis as ibc
+import red_button.productivity_types.minute_types.neck as ron
 
 
 def get_keyboard():

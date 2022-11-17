@@ -3,7 +3,7 @@ from aiogram import types
 import main
 import bot_texts
 from bot_settings import connection
-import red_button.ppzv_types.prevention_of_joint_diseases.prevention_of_joint_diseases_types.exercises_for_the_torso as eft
+import red_button.prevention_types.prevention_of_joint_diseases.prevention_of_joint_diseases_types.exercises_for_the_torso as eft
 from bot_settings import dp
 from card import Card
 

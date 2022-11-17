@@ -2,11 +2,11 @@ from aiogram.dispatcher.filters import Text
 from aiogram import types
 
 import red_button.productivity_types.micropause as micropause
-import red_button.productivity_types.micropause_types.improves_cerebral_circulation_cards as icc
+import red_button.productivity_types.micropause_types.brain_cards as icc
 from bot_settings import dp
 import bot_texts as bt
 
-STATE = 'improves_cerebral_circulation'
+STATE = 'micropause_brain'
 
 
 def get_keyboard():

@@ -4,13 +4,15 @@ from aiogram import Bot, types
 import bot_texts as bt
 from bot_settings import bot, TOKEN, dp
 import red_button.start_menu as sm
-import red_button.ppzv_types.breathing_exercises as be
-import red_button.ppzv_types.prevention_of_osteochondrosis as po
-import red_button.ppzv_types.with_increased_neuro_emotional_stress as win
-import red_button.ppzv_types.flat_feet_and_varicose_veins as ffv
-import red_button.ppzv_types.strengthening_the_arch_of_the_foot_with_flat_feet as sta
-import red_button.ppzv_types.prevention_of_joint_diseases.prevention_of_joint_diseases as prev_of_j
-def get_keyboard1():
+import red_button.prevention_types.breathing_exercises as be
+import red_button.prevention_types.prevention_of_osteochondrosis as po
+import red_button.prevention_types.with_increased_neuro_emotional_stress as win
+import red_button.prevention_types.flat_feet_and_varicose_veins as ffv
+import red_button.prevention_types.strengthening_the_arch_of_the_foot_with_flat_feet as sta
+import red_button.prevention_types.prevention_of_joint_diseases.prevention_of_joint_diseases as prev_of_j
+
+
+def get_keyboard():
     buttons = [types.InlineKeyboardButton(text="Дыхательные упражнения", callback_data="state_3.1"),
                types.InlineKeyboardButton(text="Профилактика Остеохондроза", callback_data="state_3.2"),
                types.InlineKeyboardButton(text="При выполнении нервно-эмоциональном напряжении",
@@ -29,12 +31,8 @@ def get_keyboard1():
     return keyboard
 
 
-
-
-
-
-async def start_ppzv(call):
-    await call.message.answer(bt.ppzv_desc, reply_markup=get_keyboard1())
+async def start_prevention(call):
+    await call.message.answer(bt.ppzv_desc, reply_markup=get_keyboard())
 
 
 @dp.callback_query_handler(Text(startswith="state_3"))
@@ -69,8 +67,5 @@ async def callbacks_num(call: types.CallbackQuery):
 
         await call.message.delete()
         await sm.menu(call.message)
-
-
-
 
     await call.answer()

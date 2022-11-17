@@ -4,9 +4,9 @@ from aiogram import types
 import red_button.recovery as pr
 from bot_settings import dp
 import bot_texts as bt
-import red_button.recovery_types.for_those_employed_in_heavy_physical_labor_cards as ftec
+import red_button.recovery_types.physical_activity_cards as ftec
 
-STATE = 'for_those_employed_in_heavy_physical_labor'
+STATE = 'recovery_physical_activity'
 
 
 def get_keyboard():

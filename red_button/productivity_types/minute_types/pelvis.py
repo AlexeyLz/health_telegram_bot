@@ -4,9 +4,9 @@ from aiogram import types
 import red_button.productivity_types.minute as minute
 from bot_settings import dp
 import bot_texts as bt
-import red_button.productivity_types.minute_types.increase_blood_circulation_in_the_legs_and_pelvis_cards as ibcc
+import red_button.productivity_types.minute_types.pelvis_cards as ibcc
 
-STATE = 'increase_blood_circulation_in_the_legs_and_pelvis'
+STATE = 'minute_pelvis'
 
 
 def get_keyboard():

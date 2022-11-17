@@ -3,7 +3,7 @@ from aiogram import types
 import main
 import bot_texts
 from bot_settings import connection
-import red_button.ppzv_types.prevention_of_osteochondrosis as po
+import red_button.prevention_types.prevention_of_osteochondrosis as po
 from bot_settings import dp
 from card import Card
 

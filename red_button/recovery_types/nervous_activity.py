@@ -4,9 +4,9 @@ from aiogram import types
 import red_button.recovery as pr
 from bot_settings import dp
 import bot_texts as bt
-import red_button.recovery_types.for_those_employed_in_nervously_intense_work_cards as ftenc
+import red_button.recovery_types.nervous_activity_cards as ftenc
 
-STATE = 'for_those_employed_in_nervously_intense_work'
+STATE = 'recovery_nervous_activity'
 
 
 def get_keyboard():

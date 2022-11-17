@@ -4,14 +4,14 @@ from aiogram import types
 import bot_texts
 from bot_settings import connection
 
-import red_button.productivity_types.introduction_types.physical_work as pw
+import red_button.productivity_types.introduction_types.physical_activity as pw
 from bot_settings import dp
 from card import Card
 import main
 
-TABLE_NAME = 'physical_labor'
-USUAL_STATE = 'physical_labor_cards'
-END_STATE = 'physical_labor_cards_end'
+TABLE_NAME = 'introduction_physical_activity'
+USUAL_STATE = 'introduction_physical_activity_cards'
+END_STATE = 'introduction_physical_activity_cards_end'
 
 
 def get_keyboard():

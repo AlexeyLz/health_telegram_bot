@@ -1,19 +1,10 @@
 import aiogram
 from aiogram.dispatcher.filters import Text
 from aiogram import types
-from bot_settings import bot, dp, path_to_main_gif, connection, path_to_main_logo, path_to_main_logo_jpg, TOKEN, \
-    WEBHOOK_URL
+from bot_settings import bot, dp, path_to_main_gif, connection, path_to_main_logo, path_to_main_logo_jpg, TOKEN
 from red_button import start_menu
 import bot_texts as bt
 from main import start_bot, save_user
-
-
-async def on_startup(dispatcher):
-    await bot.set_webhook(WEBHOOK_URL, drop_pending_updates=True)
-
-
-async def on_shutdown(dispatcher):
-    await bot.delete_webhook()
 
 
 @dp.message_handler(commands="start")
@@ -65,6 +56,14 @@ async def process_donate_command(message: types.Message):
     keyboard.add(button)
     text = 'Поддержать нас подпиской - https://www.patreon.com/healthyemployer'
     await message.answer(text, reply_markup=keyboard)
+
+
+@dp.message_handler(commands=['test'])
+async def process_off_command(message: types.Message):
+    await message.answer_video_note(
+        video_note='https://media.publit.io/file/3Prevention/5Joints/4Arms/9.mp4')
+    await message.answer_animation(
+        animation='https://media.publit.io/file/Productivity/1Introduction/1SedentaryLabor/1.mp4')
 
 
 @dp.message_handler(commands=['off'])

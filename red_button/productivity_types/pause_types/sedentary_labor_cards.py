@@ -4,14 +4,13 @@ from aiogram import types
 import bot_texts
 import main
 from bot_settings import connection
-import red_button.pause_types.sedentary_labor as sl
+import red_button.productivity_types.pause_types.sedentary_labor as sl
 from bot_settings import dp
 from card import Card
-import bot_texts as bt
 
-TABLE_NAME = 'sedentary_monotonous_work'
-USUAL_STATE = 'sedentary_labor_cards'
-END_STATE = 'sedentary_labor_cards_end'
+TABLE_NAME = 'pause_sedentary_labor'
+USUAL_STATE = 'pause_sedentary_labor_cards'
+END_STATE = 'pause_sedentary_labor_cards_end'
 
 
 def get_keyboard():
@@ -48,7 +47,7 @@ async def start_sedentary_labor_cards(call):
     change_number_exercise_from_db(cursor, number_exercise, call.from_user.id)
     card = Card(number_exercise, TABLE_NAME)
 
-    await call.message.answer_photo(photo=card.get_image(), caption=card.get_description(), reply_markup=get_keyboard())
+    await call.message.answer_video(video=card.get_video(), caption=card.get_description(), reply_markup=get_keyboard())
     del card
     print('hi')
     # except:
@@ -75,7 +74,7 @@ async def callbacks_num(call: types.CallbackQuery):
 
         card = Card(number_exercise, TABLE_NAME)
 
-        await call.message.answer_photo(photo=card.get_image(), caption=card.get_description(),
+        await call.message.answer_video(photo=card.get_video(), caption=card.get_description(),
                                         reply_markup=get_keyboard())
         del card
 
@@ -100,7 +99,7 @@ async def callbacks_num(call: types.CallbackQuery):
         await call.message.delete()
         if number_exercise <= table_size:
             card = Card(number_exercise, TABLE_NAME)
-            await call.message.answer_photo(photo=card.get_image(), caption=card.get_description(),
+            await call.message.answer_video(video=card.get_video(), caption=card.get_description(),
                                             reply_markup=get_keyboard())
             del card
         else:
@@ -123,7 +122,7 @@ async def callbacks_num(call: types.CallbackQuery):
 
             card = Card(number_exercise, TABLE_NAME)
 
-            await call.message.answer_photo(photo=card.get_image(), caption=card.get_description(),
+            await call.message.answer_video(video=card.get_video(), caption=card.get_description(),
                                             reply_markup=get_keyboard())
             del card
 

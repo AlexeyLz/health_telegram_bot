@@ -4,7 +4,7 @@ from aiogram import types
 import red_button.prevention as ppzv
 from bot_settings import dp
 import bot_texts as bt
-import red_button.ppzv_types.breathing_exercises_cards as bec
+import red_button.prevention_types.breathing_exercises_cards as bec
 
 STATE = 'breathing_exercises'
 

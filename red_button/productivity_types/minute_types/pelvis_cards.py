@@ -4,13 +4,13 @@ from aiogram import types
 import bot_texts
 import main
 from bot_settings import connection
-import red_button.productivity_types.minute_types.increase_blood_circulation_in_the_legs_and_pelvis as ibcc
+import red_button.productivity_types.minute_types.pelvis as ibcc
 from bot_settings import dp
 from card import Card
 
-TABLE_NAME = 'increase_blood_circulation_in_the_legs_and_pelvis'
-USUAL_STATE = 'increase_blood_circulation_in_the_lap_cards'
-END_STATE = 'increase_blood_circulation_in_the_lap_cards_end'
+TABLE_NAME = 'minute_pelvis'
+USUAL_STATE = 'minute_pelvis_cards'
+END_STATE = 'minute_pelvis_cards_end'
 
 def get_keyboard():
     buttons = [types.InlineKeyboardButton(text="Далее", callback_data=USUAL_STATE+"_state_1.1"),
@@ -47,7 +47,7 @@ async def start_ibcc_cards(call):
     change_number_exercise_from_db(cursor, number_exercise, call.from_user.id)
     card = Card(number_exercise, TABLE_NAME)
 
-    await call.message.answer_photo(photo=card.get_image(), caption=card.get_description(), reply_markup=get_keyboard())
+    await call.message.answer_video(video=card.get_video(), caption=card.get_description(), reply_markup=get_keyboard())
     del card
     print('hi')
     # except:
@@ -74,7 +74,7 @@ async def callbacks_num(call: types.CallbackQuery):
 
         card = Card(number_exercise, TABLE_NAME)
 
-        await call.message.answer_photo(photo=card.get_image(), caption=card.get_description(),
+        await call.message.answer_video(video=card.get_video(), caption=card.get_description(),
                                         reply_markup=get_keyboard())
         del card
 
@@ -99,7 +99,7 @@ async def callbacks_num(call: types.CallbackQuery):
         await call.message.delete()
         if number_exercise <= table_size:
             card = Card(number_exercise, TABLE_NAME)
-            await call.message.answer_photo(photo=card.get_image(), caption=card.get_description(),
+            await call.message.answer_video(video=card.get_video(), caption=card.get_description(),
                                             reply_markup=get_keyboard())
             del card
         else:
@@ -122,7 +122,7 @@ async def callbacks_num(call: types.CallbackQuery):
 
             card = Card(number_exercise, TABLE_NAME)
 
-            await call.message.answer_photo(photo=card.get_image(), caption=card.get_description(),
+            await call.message.answer_video(video=card.get_video(), caption=card.get_description(),
                                             reply_markup=get_keyboard())
             del card
 

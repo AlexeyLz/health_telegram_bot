@@ -7,8 +7,7 @@ from aiogram.utils import executor
 import logging
 import commands
 import languages
-from bot_settings import bot, dp, path_to_main_gif, connection, path_to_main_logo, path_to_main_logo_jpg, TOKEN, \
-    WEBHOOK_PATH, WEBAPP_PORT, WEBAPP_HOST, WEBHOOK_URL
+from bot_settings import bot, dp, path_to_main_gif, connection, path_to_main_logo, path_to_main_logo_jpg
 from red_button import start_menu
 import bot_texts as bt
 from aiogram.utils.executor import start_webhook
@@ -99,25 +98,5 @@ async def cmd_start(message: types.Message):
     await start_bot(message)
 
 
-
-
-@dp.message_handler()
-async def echo(message: types.Message):
-    await message.answer("приветик")
-
-
-# if __name__ == '__main__':
-#     executor.start_polling(dp, skip_updates=True)
-
-
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
-    start_webhook(
-        dispatcher=dp,
-        webhook_path=WEBHOOK_PATH,
-        skip_updates=True,
-        on_startup=commands.on_startup,
-        on_shutdown=commands.on_shutdown,
-        host=WEBAPP_HOST,
-        port=WEBAPP_PORT,
-    )
+    executor.start_polling(dp, skip_updates=True)

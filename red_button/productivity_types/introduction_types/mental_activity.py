@@ -2,11 +2,11 @@ from aiogram.dispatcher.filters import Text
 from aiogram import types
 
 import red_button.productivity_types.introduction as gymnastics
-import red_button.productivity_types.introduction_types.brain_work_cards as bwc
+import red_button.productivity_types.introduction_types.mental_activity_cards as bwc
 from bot_settings import dp
 import bot_texts as bt
 
-STATE = 'mental_labor'
+STATE = 'introduction_mental_activity'
 
 
 def get_keyboard():

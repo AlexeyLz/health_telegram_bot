@@ -1,16 +1,16 @@
 from aiogram.dispatcher.filters import Text
 from aiogram import types
 
-import red_button.pg_types.gymnastics as gymnastics
-import red_button.pg_types.pause as pause
-import red_button.pg_types.minute as minute
-import red_button.pg_types.micropause as micropause
+import red_button.productivity_types.introduction as gymnastics
+import red_button.productivity_types.pause as pause
+import red_button.productivity_types.minute as minute
+import red_button.productivity_types.micropause as micropause
 from bot_settings import dp
 import red_button.start_menu as sm
 import bot_texts as bt
 
 
-def get_keyboard1():
+def get_keyboard():
     buttons = [types.InlineKeyboardButton(text="Вводная часть", callback_data="pfk_state_1.1"),
                types.InlineKeyboardButton(text="Пауза", callback_data="pfk_state_1.2"),
                types.InlineKeyboardButton(text="Минута", callback_data="pfk_state_1.3"),
@@ -22,12 +22,8 @@ def get_keyboard1():
     return keyboard
 
 
-
-
-
-
-async def start_pfk(call):
-    await call.message.answer(bt.p_gymnastics_desc, reply_markup=get_keyboard1())
+async def start_productivity(call):
+    await call.message.answer(bt.p_gymnastics_desc, reply_markup=get_keyboard())
 
 
 @dp.callback_query_handler(Text(startswith="pfk_state_1"))
@@ -54,6 +50,5 @@ async def callbacks_num(call: types.CallbackQuery):
     elif action == "5":
         await call.message.delete()
         await sm.menu(call.message)
-
 
     await call.answer()

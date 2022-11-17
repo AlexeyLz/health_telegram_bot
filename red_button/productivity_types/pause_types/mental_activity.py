@@ -4,9 +4,9 @@ from aiogram import types
 import red_button.productivity_types.pause as pause
 from bot_settings import dp
 import bot_texts as bt
-import red_button.productivity_types.pause_types.brain_work_cards as bwc
+import red_button.productivity_types.pause_types.mental_activity_cards as bwc
 
-STATE = 'brain_work'
+STATE = 'pause_mental_activity'
 
 
 def get_keyboard():

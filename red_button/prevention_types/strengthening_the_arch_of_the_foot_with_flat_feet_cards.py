@@ -3,7 +3,7 @@ from aiogram import types
 import main
 import bot_texts
 from bot_settings import connection
-import red_button.ppzv_types.strengthening_the_arch_of_the_foot_with_flat_feet as sta
+import red_button.prevention_types.strengthening_the_arch_of_the_foot_with_flat_feet as sta
 from bot_settings import dp
 from card import Card
 

@@ -4,14 +4,14 @@ from aiogram import types
 import bot_texts
 import main
 from bot_settings import connection
-import red_button.recovery_types.for_those_employed_in_heavy_physical_labor as fte
+import red_button.recovery_types.physical_activity as fte
 from bot_settings import dp
 from card import Card
 
 import bot_texts as bt
-TABLE_NAME = 'for_those_employed_in_heavy_physical_labor'
-USUAL_STATE = 'for_those_employed_in_heavy_physical_labor_cards'
-END_STATE = 'for_those_employed_in_heavy_physical_labor_cards_end'
+TABLE_NAME = 'recovery_physical_activity'
+USUAL_STATE = 'recovery_physical_activity_cards'
+END_STATE = 'recovery_physical_activity_cards_end'
 
 def get_keyboard():
     buttons = [types.InlineKeyboardButton(text="Далее", callback_data=USUAL_STATE+"_state_1.1"),

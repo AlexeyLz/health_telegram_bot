@@ -1,11 +1,11 @@
 from aiogram.dispatcher.filters import Text
 from aiogram import types
 
-import red_button.ppzv_types.prevention_of_joint_diseases.prevention_of_joint_diseases as prev_of_j
+import red_button.prevention_types.prevention_of_joint_diseases.prevention_of_joint_diseases as prev_of_j
 from bot_settings import dp
 import bot_texts as bt
 import \
-    red_button.ppzv_types.prevention_of_joint_diseases.prevention_of_joint_diseases_types.general_impact_exercises_cards as gic
+    red_button.prevention_types.prevention_of_joint_diseases.prevention_of_joint_diseases_types.general_impact_exercises_cards as gic
 
 STATE = 'prevention_of_joint_diseases_part_4'
 

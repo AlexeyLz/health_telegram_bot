@@ -3,7 +3,7 @@ from aiogram import types
 import main
 import bot_texts
 from bot_settings import connection
-import red_button.ppzv_types.flat_feet_and_varicose_veins as ffv
+import red_button.prevention_types.flat_feet_and_varicose_veins as ffv
 from bot_settings import dp
 from card import Card
 

@@ -1,11 +1,11 @@
 from aiogram.dispatcher.filters import Text
 from aiogram import types
 
-import red_button.ppzv_types.prevention_of_joint_diseases.prevention_of_joint_diseases as prev_of_j
+import red_button.prevention_types.prevention_of_joint_diseases.prevention_of_joint_diseases as prev_of_j
 from bot_settings import dp
 import bot_texts as bt
 import \
-    red_button.ppzv_types.prevention_of_joint_diseases.prevention_of_joint_diseases_types.exercises_for_the_muscles_of_the_feet_and_pelvis_cards as efmc
+    red_button.prevention_types.prevention_of_joint_diseases.prevention_of_joint_diseases_types.exercises_for_the_muscles_of_the_feet_and_pelvis_cards as efmc
 
 STATE = 'prevention_of_joint_diseases_part_2'
 

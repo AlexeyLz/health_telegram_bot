@@ -4,9 +4,9 @@ from aiogram import types
 import red_button.productivity as pfk
 from bot_settings import dp
 import bot_texts as bt
-import red_button.productivity_types.gymnastics_types.brain_work as bw
-import red_button.productivity_types.gymnastics_types.physical_work as pw
-import red_button.productivity_types.gymnastics_types.sedentary_work as sw
+import red_button.productivity_types.introduction_types.mental_activity as bw
+import red_button.productivity_types.introduction_types.physical_activity as pw
+import red_button.productivity_types.introduction_types.sedentary_labor as sw
 
 
 def get_keyboard():

@@ -6,7 +6,7 @@ from bot_settings import dp
 import bot_texts as bt
 import red_button.productivity_types.pause_types.physical_activity_cards as hplc
 
-STATE = 'hard_physical_labor'
+STATE = 'pause_physical_activity'
 
 
 def get_keyboard():

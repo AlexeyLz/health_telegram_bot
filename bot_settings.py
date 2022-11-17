@@ -11,13 +11,7 @@ load_dotenv(find_dotenv())
 
 TOKEN = os.getenv('TOKEN')
 
-WEBHOOK_HOST = os.getenv('WEBHOOK_HOST')
-WEBHOOK_PATH = f'/webhook/{TOKEN}'
-WEBHOOK_URL = f'{WEBHOOK_HOST}{WEBHOOK_PATH}'
 
-# webserver settings
-WEBAPP_HOST = '0.0.0.0'
-WEBAPP_PORT = os.getenv('PORT', default=8000)
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)

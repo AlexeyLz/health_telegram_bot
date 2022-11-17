@@ -3,11 +3,11 @@ from aiogram.dispatcher.filters import Text
 from aiogram import types
 
 import red_button.productivity_types.micropause as micropause
-import red_button.productivity_types.micropause_types.reducing_the_tension_of_the_nervous_system_cards as rtc
+import red_button.productivity_types.micropause_types.decrease_of_the_CNS_tension_cards as rtc
 from bot_settings import dp
 import bot_texts as bt
 
-STATE = 'reducing_the_tension_of_the_nervous_system'
+STATE = 'micropause_decrease_of_the_CNS_tension'
 
 
 def get_keyboard():

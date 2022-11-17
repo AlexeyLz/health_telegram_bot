@@ -2,12 +2,12 @@ from aiogram.dispatcher.filters import Text
 from aiogram import types
 
 import red_button.productivity as pfk
-from bot_settings import bot, dp
+from bot_settings import dp
 import bot_texts as bt
-import red_button.micropause_types.eye_fatigue as ef
-import red_button.micropause_types.improves_cerebral_circulation as ic
-import red_button.micropause_types.reducing_the_tension_of_the_nervous_system as rt
-import red_button.micropause_types.increasing_excitability_of_the_nervous_system as ie
+import red_button.productivity_types.micropause_types.eyes as ef
+import red_button.productivity_types.micropause_types.brain as ic
+import red_button.productivity_types.micropause_types.decrease_of_the_CNS_tension as rt
+import red_button.productivity_types.micropause_types.increase_of_the_CNS_tension as ie
 
 
 def get_keyboard():
@@ -15,7 +15,7 @@ def get_keyboard():
                types.InlineKeyboardButton(text="Мозг", callback_data="state_1_2.2"),#Улучшающая мозговое кровообращение
                types.InlineKeyboardButton(text="Снижение напряжения нервной системы", callback_data="state_1_2.3"),
                types.InlineKeyboardButton(text="Повышение напряжения нервной системы", callback_data="state_1_2.4"),#Повышающая возбудимость нервной системы"
-               types.InlineKeyboardButton(text="Назад", callback_data="state_1_1.5"),
+               types.InlineKeyboardButton(text="Назад", callback_data="state_1_2.5"),
                # types.InlineKeyboardButton(text="Помощь", callback_data="state_1_1.6")
                ]
     keyboard = types.InlineKeyboardMarkup(row_width=2)

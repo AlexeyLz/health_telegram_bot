@@ -2,11 +2,11 @@ from aiogram.dispatcher.filters import Text
 from aiogram import types
 
 import red_button.productivity_types.micropause as micropause
-import red_button.productivity_types.micropause_types.eye_fatigue_cards as efc
+import red_button.productivity_types.micropause_types.eyes_cards as efc
 from bot_settings import dp
 import bot_texts as bt
 
-STATE = 'eye_fatigue'
+STATE = 'micropause_eyes'
 
 
 def get_keyboard():

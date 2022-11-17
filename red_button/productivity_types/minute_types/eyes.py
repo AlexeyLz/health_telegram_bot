@@ -4,9 +4,9 @@ from aiogram import types
 import red_button.productivity_types.minute as minute
 from bot_settings import dp
 import bot_texts as bt
-import red_button.productivity_types.minute_types.reduce_eye_fatigue_cards as refc
+import red_button.productivity_types.minute_types.eyes_cards as refc
 
-STATE = 'reduce_eye_fatigue'
+STATE = 'minute_eyes'
 
 
 def get_keyboard():

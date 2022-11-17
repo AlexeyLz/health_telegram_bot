@@ -4,9 +4,9 @@ from aiogram import types
 import red_button.productivity_types.minute as minute
 from bot_settings import dp
 import bot_texts as bt
-import red_button.productivity_types.minute_types.relieve_fatigue_from_the_lower_back_and_back_cards as rfbc
+import red_button.productivity_types.minute_types.loin_cards as rfbc
 
-STATE = 'relieve_fatigue_from_the_lower_back_and_back'
+STATE = 'minute_loin'
 
 
 def get_keyboard():

@@ -4,7 +4,7 @@ from aiogram import types
 import red_button.prevention as ppzv
 from bot_settings import dp
 import bot_texts as bt
-import red_button.ppzv_types.strengthening_the_arch_of_the_foot_with_flat_feet_cards as stac
+import red_button.prevention_types.strengthening_the_arch_of_the_foot_with_flat_feet_cards as stac
 
 STATE = 'strengthening_the_arch_of_the_foot_with_ff'
 

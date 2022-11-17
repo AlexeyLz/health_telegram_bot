@@ -2,11 +2,11 @@ from aiogram.dispatcher.filters import Text
 from aiogram import types
 
 import red_button.productivity_types.introduction as gymnastics
-import red_button.productivity_types.introduction_types.physical_work_cards as pwc
+import red_button.productivity_types.introduction_types.physical_activity_cards as pwc
 from bot_settings import dp
 import bot_texts as bt
 
-STATE = 'physical_labor'
+STATE = 'introduction_physical_activity'
 
 
 def get_keyboard():

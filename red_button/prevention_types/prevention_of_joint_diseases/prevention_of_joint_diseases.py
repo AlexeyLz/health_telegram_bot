@@ -5,10 +5,10 @@ import bot_texts as bt
 from bot_settings import bot, TOKEN, dp
 
 import red_button.prevention as ppzv
-import red_button.ppzv_types.prevention_of_joint_diseases.prevention_of_joint_diseases_types.exercises_for_arms_and_shoulder_girdle as ef
-import red_button.ppzv_types.prevention_of_joint_diseases.prevention_of_joint_diseases_types.general_impact_exercises as gi
-import red_button.ppzv_types.prevention_of_joint_diseases.prevention_of_joint_diseases_types.exercises_for_the_muscles_of_the_feet_and_pelvis as efm
-import red_button.ppzv_types.prevention_of_joint_diseases.prevention_of_joint_diseases_types.exercises_for_the_torso as eft
+import red_button.prevention_types.prevention_of_joint_diseases.prevention_of_joint_diseases_types.exercises_for_arms_and_shoulder_girdle as ef
+import red_button.prevention_types.prevention_of_joint_diseases.prevention_of_joint_diseases_types.general_impact_exercises as gi
+import red_button.prevention_types.prevention_of_joint_diseases.prevention_of_joint_diseases_types.exercises_for_the_muscles_of_the_feet_and_pelvis as efm
+import red_button.prevention_types.prevention_of_joint_diseases.prevention_of_joint_diseases_types.exercises_for_the_torso as eft
 def get_keyboard1():
     buttons = [types.InlineKeyboardButton(text="Упражнения для рук и плечевого пояса", callback_data="state_prev3.1"),
                types.InlineKeyboardButton(text="Упражнения для  мышц ступней ног и области таза",

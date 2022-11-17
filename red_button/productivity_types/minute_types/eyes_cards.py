@@ -3,13 +3,13 @@ from aiogram import types
 import main
 import bot_texts
 from bot_settings import connection
-import red_button.productivity_types.minute_types.reduce_eye_fatigue as ref
+import red_button.productivity_types.minute_types.eyes as ref
 from bot_settings import dp
 from card import Card
 
-TABLE_NAME = 'reduce_eye_fatigue'
-USUAL_STATE = 'reduce_eye_fatigue_cards'
-END_STATE = 'reduce_eye_fatigue_cards_end'
+TABLE_NAME = 'minute_eyes'
+USUAL_STATE = 'minute_eyes_cards'
+END_STATE = 'minute_eyes_cards_end'
 
 def get_keyboard():
     buttons = [types.InlineKeyboardButton(text="Далее", callback_data=USUAL_STATE+"_state_1.1"),
@@ -46,7 +46,7 @@ async def start_refc_cards(call):
     change_number_exercise_from_db(cursor, number_exercise, call.from_user.id)
     card = Card(number_exercise, TABLE_NAME)
 
-    await call.message.answer_photo(photo=card.get_image(), caption=card.get_description(), reply_markup=get_keyboard())
+    await call.message.answer_video(video=card.get_video(), caption=card.get_description(), reply_markup=get_keyboard())
     del card
     print('hi')
     # except:
@@ -73,7 +73,7 @@ async def callbacks_num(call: types.CallbackQuery):
 
         card = Card(number_exercise, TABLE_NAME)
 
-        await call.message.answer_photo(photo=card.get_image(), caption=card.get_description(),
+        await call.message.answer_video(video=card.get_video(), caption=card.get_description(),
                                         reply_markup=get_keyboard())
         del card
 
@@ -98,7 +98,7 @@ async def callbacks_num(call: types.CallbackQuery):
         await call.message.delete()
         if number_exercise <= table_size:
             card = Card(number_exercise, TABLE_NAME)
-            await call.message.answer_photo(photo=card.get_image(), caption=card.get_description(),
+            await call.message.answer_video(video=card.get_video(), caption=card.get_description(),
                                             reply_markup=get_keyboard())
             del card
         else:
@@ -121,7 +121,7 @@ async def callbacks_num(call: types.CallbackQuery):
 
             card = Card(number_exercise, TABLE_NAME)
 
-            await call.message.answer_photo(photo=card.get_image(), caption=card.get_description(),
+            await call.message.answer_video(video=card.get_video(), caption=card.get_description(),
                                             reply_markup=get_keyboard())
             del card
 

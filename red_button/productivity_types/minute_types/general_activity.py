@@ -4,9 +4,9 @@ from aiogram import types
 import red_button.productivity_types.minute as minute
 from bot_settings import dp
 import bot_texts as bt
-import red_button.productivity_types.minute_types.general_impact_cards as gic
+import red_button.productivity_types.minute_types.general_activity_cards as gic
 
-STATE = 'general_impact'
+STATE = 'minute_general_activity'
 
 
 def get_keyboard():

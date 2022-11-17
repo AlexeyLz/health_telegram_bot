@@ -3,7 +3,7 @@ from aiogram import types
 import main
 import bot_texts
 from bot_settings import connection
-import red_button.ppzv_types.prevention_of_joint_diseases.prevention_of_joint_diseases_types.general_impact_exercises as gi
+import red_button.prevention_types.prevention_of_joint_diseases.prevention_of_joint_diseases_types.general_impact_exercises as gi
 from bot_settings import dp
 from card import Card
 

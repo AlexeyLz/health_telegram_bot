@@ -4,7 +4,7 @@ from aiogram import types
 import red_button.prevention as ppzv
 from bot_settings import dp
 import bot_texts as bt
-import red_button.ppzv_types.prevention_of_osteochondrosis_cards as poc
+import red_button.prevention_types.prevention_of_osteochondrosis_cards as poc
 
 STATE = 'prevention_of_osteochondrosis'
 

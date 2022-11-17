@@ -3,7 +3,7 @@ from aiogram import types
 import main
 import bot_texts
 from bot_settings import connection
-import red_button.ppzv_types.breathing_exercises as be
+import red_button.prevention_types.breathing_exercises as be
 from bot_settings import dp
 from card import Card
 

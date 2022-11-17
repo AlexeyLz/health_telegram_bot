@@ -4,9 +4,9 @@ from aiogram import types
 import red_button.productivity_types.minute as minute
 from bot_settings import dp
 import bot_texts as bt
-import red_button.productivity_types.minute_types.rest_leg_muscles_cards as rlmc
+import red_button.productivity_types.minute_types.legs_cards as rlmc
 
-STATE = 'rest_leg_muscles'
+STATE = 'minute_legs'
 
 
 def get_keyboard():

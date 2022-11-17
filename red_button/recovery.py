@@ -5,11 +5,11 @@ import bot_texts as bt
 from bot_settings import bot, TOKEN, dp
 import red_button.start_menu as sm
 
-import red_button.pr_types.for_those_employed_in_heavy_physical_labor as fte
-import red_button.pr_types.for_those_employed_in_nervously_intense_work as ften
+import red_button.recovery_types.physical_activity as fte
+import red_button.recovery_types.nervous_activity as ften
 
 
-def get_keyboard1():
+def get_keyboard():
     buttons = [types.InlineKeyboardButton(text="Физический труд", callback_data="state_2.1"),
                # Для занятых тяжелым физическим трудом
                types.InlineKeyboardButton(text="Нервно-напряженный труд", callback_data="state_2.2"),
@@ -23,8 +23,8 @@ def get_keyboard1():
     return keyboard
 
 
-async def start_pr(call):
-    await call.message.answer(bt.pr_desc, reply_markup=get_keyboard1())
+async def start_recovery(call):
+    await call.message.answer(bt.pr_desc, reply_markup=get_keyboard())
 
 
 @dp.callback_query_handler(Text(startswith="state_2"))
