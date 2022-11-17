@@ -8,8 +8,8 @@ from bot_settings import dp
 from card import Card
 
 TABLE_NAME = 'minute_neck'
-USUAL_STATE = 'minute_neck'
-END_STATE = 'minute_neck'
+USUAL_STATE = 'minute_neck_cards'
+END_STATE = 'minute_neck_cards_end'
 
 def get_keyboard():
     buttons = [types.InlineKeyboardButton(text="Далее", callback_data=USUAL_STATE+"_state_1.1"),
