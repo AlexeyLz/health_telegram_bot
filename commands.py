@@ -58,13 +58,6 @@ async def process_donate_command(message: types.Message):
     await message.answer(text, reply_markup=keyboard)
 
 
-@dp.message_handler(commands=['test'])
-async def process_off_command(message: types.Message):
-    await message.answer_video_note(
-        video_note='https://media.publit.io/file/3Prevention/5Joints/4Arms/9.mp4')
-    await message.answer_animation(
-        animation='https://media.publit.io/file/Productivity/1Introduction/1SedentaryLabor/1.mp4')
-
 
 @dp.message_handler(commands=['off'])
 async def process_off_command(message: types.Message):

@@ -10,7 +10,7 @@ class Card:
         self.id = card_data[1]
         self.description = card_data[2]
         self.image_path = card_data[3]
-        self.video_url = 'https://media.publit.io/file/' + card_data[3] + '.mp4'
+        self.video_url = 'https://media.publit.io/file/h_1080/' + card_data[3] + '.mp4'
 
     def get_description(self):
         return self.description + '\n' + self.video_url
