@@ -58,7 +58,6 @@ async def process_donate_command(message: types.Message):
     await message.answer(text, reply_markup=keyboard)
 
 
-
 @dp.message_handler(commands=['off'])
 async def process_off_command(message: types.Message):
     await message.answer('Команда находится в разработке.')
