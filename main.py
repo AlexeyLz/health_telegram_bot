@@ -2,7 +2,7 @@ import os
 
 import aiogram
 from aiogram.dispatcher.filters import Text
-from aiogram import types
+from aiogram import types, Dispatcher
 from aiogram.utils import executor
 import logging
 import commands
@@ -43,6 +43,8 @@ def save_user(user_id):
         cursor.execute('INSERT INTO users VALUES(' + str(user_id) + ',0,0)')
     connection.commit()
     cursor.close()
+
+
 
 
 async def start_bot(message: types.Message):
@@ -96,6 +98,8 @@ async def callbacks_num_training(call: types.CallbackQuery):
 
 async def cmd_start(message: types.Message):
     await start_bot(message)
+
+
 
 
 if __name__ == '__main__':

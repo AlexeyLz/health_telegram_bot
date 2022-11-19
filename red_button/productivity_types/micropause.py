@@ -50,7 +50,8 @@ async def callbacks_num(call: types.CallbackQuery):
     elif action == "2":
 
         await call.message.delete()
-        await ic.start_ic(call)
+        #await ic.start_ic(call)
+        await call.message.answer("В разработке.")
 
     elif action == "3":
 
