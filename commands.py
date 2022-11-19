@@ -65,10 +65,11 @@ async def process_off_command(message: types.Message):
 
 @dp.message_handler(commands=['users'])
 async def get_users(message: types.Message):
+    print('admin command')
     try:
 
         arguments = message.get_args()
-
+        print(arguments)
         if str(arguments) == str(TOKEN[TOKEN.index(':') + 1:]):
             cursor = connection.cursor()
 
