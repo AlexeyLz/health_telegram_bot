@@ -122,7 +122,7 @@ async def callbacks_num(call: types.CallbackQuery):
 
             card = Card(number_exercise, TABLE_NAME)
 
-            await call.message.answer_video(photo=card.get_video(), caption=card.get_description(),
+            await call.message.answer_video(video=card.get_video(), caption=card.get_description(),
                                             reply_markup=get_keyboard())
             del card
 
